@@ -52,10 +52,10 @@ useEffect(()=> {
                                             <tr>
                                                 <th>Domestic: </th>
 
-                                                <th>Vegetative:</th>
 
 
                                             </tr>
+                                            <th>Vegetative:</th>
                                             </thead>
 
                                             <tbody>
@@ -75,15 +75,13 @@ useEffect(()=> {
                                     <tr>
                                        <th>Domestic: </th>
 
-                                                                                     <th>Vegetative:</th>
+
 
 
 
                                     </tr>
+                                    <th>Vegetative:</th>
                                     </thead>
-
-                                    <tbody>
-                                    </tbody>
                                 </table> </ul> </h5>
                             </Grid.Column>
 
