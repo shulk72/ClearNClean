@@ -42,101 +42,51 @@ useEffect(()=> {
         return <>
             <Segment>
                 <Segment placeholder>
-                    <Grid columns={3} stackable textAlign='center'>
-                        <Grid.Row verticalAlign='middle'>
+                    <Grid columns={3} stackable textAlign='left'>
+
                             <Grid.Column>
-                                <h5> Most Booked Person:
+                                <h5> Revenue:
                                     <li>
                                         <table style={{marginLeft: "auto", marginRight: "auto"}}>
                                             <thead>
                                             <tr>
-                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Number of bookings</th>
-                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Person name</th>
+                                                <th>Domestic: </th>
+
+                                                <th>Vegetative:</th>
 
 
                                             </tr>
                                             </thead>
 
                                             <tbody>
-                                            {
-                                                BookedPersons.map(item => {
-                                                        return (
-                                                            <tr>
-                                                                <td style={{padding:"5px", border: "1px solid black"}}>{item.count}</td>
-                                                                <td style={{padding:"5px", border: "1px solid black"}}>{item.p_fname}_{item.p_lname}</td>
-                                                            </tr>
-                                                        )
-                                                    }
-                                                )
-                                            }
+
                                             </tbody>
                                         </table>
                                             </li>
                                     </h5>
 
                             </Grid.Column>
-                            <h5> Busiest Hours: <ul> <li>
-                                <table style={{marginLeft: "auto", marginRight: "auto"}}>
-                                    <thead>
-                                    <tr>
-                                        <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Number of bookings</th>
-                                        <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Start Time</th>
-                                        <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>End Time</th>
 
 
-                                    </tr>
-                                    </thead>
 
-                                    <tbody>
-                                    {
-                                        BusiestHours.map(item => {
-                                                return (
-                                                    <tr>
-                                                        <td style={{padding:"5px", border: "1px solid black"}}>{item.activebooking}</td>
-                                                        <td style={{padding:"5px", border: "1px solid black"}}>{item.start_time}</td>
-                                                        <td style={{padding:"5px", border: "1px solid black"}}>{item.finish_time}</td>
-                                                    </tr>
-                                                )
-                                            }
-                                        )
-                                    }
-                                    </tbody>
-                                </table>
-                            </li>
-
-
-                     </ul>  </h5>
                             <Grid.Column>
-                                <h5>Most Booked Room: <ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
+                                <h5> Volume: <ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
                                     <thead>
                                     <tr>
-                                        <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Times Booked</th>
-                                        <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Room Name</th>
+                                       <th>Domestic: </th>
+
+                                                                                     <th>Vegetative:</th>
+
 
 
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                    {
-                                        BookedRooms.map(item => {
-                                                return (
-                                                    <tr>
-                                                        <td style={{padding:"5px", border: "1px solid black"}}>{item.timed_booked}</td>
-                                                        <td style={{padding:"5px", border: "1px solid black"}}>{item.r_name}</td>
-                                                    </tr>
-                                                )
-                                            }
-                                        )
-                                    }
                                     </tbody>
                                 </table> </ul> </h5>
-                                <Link to = "/UserView" > <button>
-                                    Go to Userview
-                                </button>
-                                    </Link>
                             </Grid.Column>
-                        </Grid.Row>
+
                     </Grid>
                 </Segment>
             </Segment>
