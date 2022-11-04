@@ -3,7 +3,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from "axios";
 import {
     Grid,
-    Segment,
+    Segment, Form
 } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
 export default
@@ -40,12 +40,24 @@ useEffect(()=> {
     componentDidMount()
 })
         return <>
+
             <Segment>
                 <Segment placeholder>
+                  <Form>
+                                                    <Form.Input label='Time'>
+                                                        <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {}}>
+                                                            <option key={0} value={"0"}>Daily</option>
+                                                            <option key={1} value={"1"}>Weekly</option>
+                                                            <option key={2} value={"2"}>Monthly</option>
+                                                            <option key={3} value={"3"}>Yearly</option>
+                                                        </select>
+                                                    </Form.Input>
+                                                 ]
+                                                    </Form>
                     <Grid columns={3} stackable textAlign='left'>
 
                             <Grid.Column>
-                                <h5> Revenue:
+                                <h5> Revenue:    (Per Material)
                                     <li>
                                         <table style={{marginLeft: "auto", marginRight: "auto"}}>
                                             <thead>
@@ -70,7 +82,7 @@ useEffect(()=> {
 
 
                             <Grid.Column>
-                                <h5> Volume: <ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
+                                <h5> Volume:  (Per Material)<ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
                                     <thead>
                                     <tr>
                                        <th>Domestic: </th>
