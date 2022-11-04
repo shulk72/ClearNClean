@@ -14,22 +14,22 @@ const [isAuth, setIsAuth] = useState(false)
     const panes = [
 
         {
-            menuItem: 'Ticket',
+            menuItem: 'Tickets',
         },
         {
             menuItem: 'Info', render: () => <Info/>
         },
         {
-            menuItem: 'UserStatistics',
+            menuItem: 'Clients',
         },
         {
-            menuItem: 'Room Management',
+            menuItem: 'Reports',
         },
         {
             menuItem: 'Account',
         },
         {
-            menuItem: 'List of Users',
+            menuItem: 'Vehicles',
         }
     ]
 

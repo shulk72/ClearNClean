@@ -43,6 +43,7 @@ useEffect(()=> {
 
             <Segment>
                 <Segment placeholder>
+
                   <Form>
                                                     <Form.Input label='Time'>
                                                         <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {}}>
