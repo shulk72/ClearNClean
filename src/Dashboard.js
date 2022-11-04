@@ -5,6 +5,7 @@ import {
     Segment, Tab
 } from 'semantic-ui-react'
 import HomePage from "./HomePage";
+import Info from "./Info"
 import {Link} from "react-router-dom";
 export default
 function Dashboard(){
@@ -16,7 +17,7 @@ const [isAuth, setIsAuth] = useState(false)
             menuItem: 'Ticket',
         },
         {
-            menuItem: 'Schedule',
+            menuItem: 'Info', render: () => <Info/>
         },
         {
             menuItem: 'UserStatistics',

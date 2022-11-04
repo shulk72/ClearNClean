@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import HomePage from "./HomePage";
-//import BookMeeting from "./BookMeeting";
+import Info from "./Info";
 import 'semantic-ui-css/semantic.min.css'
 import '@mui/material'
 import Dashboard from "./Dashboard";
@@ -15,6 +15,7 @@ ReactDOM.render(
             <Route exact path="/Home" element={<HomePage/>} />
             <Route exact path="" element={<HomePage/>} />
             <Route exact path="/Dashboard" element={<Dashboard/>} />
+             <Route exact path="/Info" element={<Info/>} />
 
         </Routes>
     </BrowserRouter>,
