@@ -54,7 +54,7 @@ useEffect(()=> {
                                                     </Form.Input>
                                                  ]
                                                     </Form>
-                    <Grid columns={3} stackable textAlign='left'>
+                    <Grid columns={3} stackable textAlign='center'>
 
                             <Grid.Column>
                                 <h5> Revenue:    (Per Material)
