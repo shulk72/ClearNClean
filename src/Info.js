@@ -53,9 +53,8 @@ useEffect(()=> {
                                                             <option key={3} value={"3"}>Yearly</option>
                                                         </select>
                                                     </Form.Input>
-                                                 ]
                                                     </Form>
-                    <Grid columns={3} stackable textAlign='center'>
+                    <Grid columns={2} stackable textAlign='center'>
 
                             <Grid.Column>
                                 <h5> Revenue:    (Per Material)

@@ -6,6 +6,7 @@ import {
 } from 'semantic-ui-react'
 import HomePage from "./HomePage";
 import Info from "./Info"
+import Vehicles from "./Vehicles"
 import Ticket from "./Ticket"
 import {Link} from "react-router-dom";
 export default
@@ -30,7 +31,7 @@ const [isAuth, setIsAuth] = useState(false)
             menuItem: 'Account',
         },
         {
-            menuItem: 'Vehicles',
+            menuItem: 'Vehicles', render: () => <Vehicles/>
         }
     ]
 
