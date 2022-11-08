@@ -6,6 +6,7 @@ import {
 } from 'semantic-ui-react'
 import HomePage from "./HomePage";
 import Info from "./Info"
+import Ticket from "./Ticket"
 import {Link} from "react-router-dom";
 export default
 function Dashboard(){
@@ -14,7 +15,7 @@ const [isAuth, setIsAuth] = useState(false)
     const panes = [
 
         {
-            menuItem: 'Tickets',
+            menuItem: 'Tickets', render: () => <Ticket/>
         },
         {
             menuItem: 'Info', render: () => <Info/>
