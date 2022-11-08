@@ -2,77 +2,74 @@ import React, { useEffect, useState} from 'react';
 import axios from "axios";
 import {
     Grid,
-    Segment, Form, Button, Modal
+    Segment, Form, Button, Modal, Container
 } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
+import Rooms from "./Components/Vehicles";
 export default
 
 function Vehicles(){
-    const [r, setr] = useState(false);
-    const [t, sett] = useState(false);
-    const [b, setb] = useState(false);
-    const [dates, setDates] = useState([]);
-    const [open, setOpen] = useState(false);
-    const [booking, setbooking] = useState(false);
-    const [book, setbook] = useState(false);
-    const [unavailable, setavailable] = useState(false);
-    const [unavail, setavail] = useState(false);
-    const [mark,setmark] = useState(false);
-    const [st_dt, setst_dt] = useState("");
-    let [et_dt, setet_dt] = useState("");
-    const[room_id,setroom_id] = useState("");
-    const[invitee,setinvitee]=  useState("");
-    const [g,setg]= useState(false);
-    const [its,setits] = useState(false)
-    const [Selected,SetSelect] = useState(false)
-    const [free, setfree] = useState(false);
-    const [updatebooking,setupdatebooking] = useState(false);
-    const[deletebooking,setdeletebooking] =useState(false)
-    const [updateunavailable,setupunavailable]= useState(false);
-    const [deleteunavailable,setdeleteupunavailable]= useState(false);
-    const [listfree,setlistfree]=useState([]);
-    const [listfr,setlistfr]=useState([]);
-    const [host,sethost] = useState([]);
- const [a,seta] =useState(false)
-    let e = localStorage.getItem("login-data");
-    let   dat = JSON.parse(e)
-    const[un,setun] =  useState("");
-    const [ba_id,setba_id] = useState("");
-    const [New,setnew] = useState("");
-    const[und,setund]= useState(false);
-    const[delebook,setdelebook] = useState(false);
-    const [rooms, setRooms] = useState([]);
-    const[k,setk] = useState(false);
-    const[y,sety] = useState(false);
-    const[ts,sets]= useState([]);
-    const[s,setl]= useState([]);
-    const[h,seth]= useState(false);
-    const[date,setdate]=useState("")
-    const[sh,setlh]= useState(false);
-    const[z,setz]=useState(false);
-    const[all,setall]= useState([]);
-    const[ty,setty]= useState([]);
-const [he,sethe]=useState(false)
-    const [pe,setpe] =useState("")
-    const [je,setje]=useState(false)
-    const [userday,setuserday] =useState(false)
-    const [room,setroom] =useState(false)
-    const[ho,setho]= useState(false);
-    const[hosted,sethosted]= useState(false);
-    const[ed,seted]= useState(false);
-    const[hstd,sethstd]= useState(false);
-    const[ost,setost]= useState(false);
+       const [isAuth, setIsAuth] = useState(false)
+       const [rooms, setRooms] = useState([]);
+       const data = localStorage.getItem('login-data');
+       const dat = JSON.parse(data);
 
-function first() {
-        if(ba_id===""||st_dt === "" || et_dt === "" || room_id === "" || invitee === ""){
-            return false
+    function type1(parameter) {
+        switch (parameter) {
+            case 1:
+                return 'laboratory'
+            case 2:
+                return 'classroom'
+            case 3:
+                return 'office'
+            case 4:
+                return 'study_space'
+            case 5:
+                return 'conference_hall'
         }
-        return true
     }
+    function getRooms(){
+        axios.get(`https://booking-system-pika.herokuapp.com/pika-booking/rooms`).then((res) => {
+                setRooms(res.data);
+                    console.log(res.data)
 
+            }, (error) => {
+                console.log(error);
+            }
+        );
+    }
+    useEffect(() => {
+
+        getRooms();
+        console.log(rooms)
+    }, []);
 return <>
      <Segment>
        <Segment placeholder>
+
+                <h1 style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>Vehicles</h1>
+                <Container>
+                    <Grid container spacing={3}>
+                        {Array.from(Array(rooms.length)).map((_, i) => (
+                            <Rooms
+
+                                RoomName = {`${rooms[i].r_name}`}
+                                Building= {`${rooms[i].r_building}`}
+                                Department= {`${rooms[i].r_department}`}
+                                Type= {`${type1(rooms[i].r_type)}`}
+                                Room_id = {rooms[i].r_id}
+                                type={"update"}/>
+                        ))}
+                        <Grid justify={"center"} container item xs={12} md={6} lg={4}>
+                            <Rooms
+                                roomName={`Create`}
+                                building={`New Room`}
+                                type={"create"}
+                            />
+                        </Grid>
+
+                    </Grid>
+                </Container>
 
 </Segment>
 </Segment>
