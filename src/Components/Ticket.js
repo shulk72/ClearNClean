@@ -9,7 +9,7 @@ import {EditOutlined, MoreHorizOutlined} from "@material-ui/icons";
 
 
 
-function Vehicles(props) {
+function Ticket(props) {
 
     const [open, setOpen] = useState();
     const [Building, setBuilding] = useState("");
@@ -283,11 +283,16 @@ console.log(data)
                     />
                 }
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary">: {props.RoomName}</Typography>
-                    <Typography variant="body2" color="textSecondary">Building: {props.Building}</Typography>
-                    <Typography variant="body2" color="textSecondary">Department: {props.Department}</Typography>
-                    <Typography variant="body2" color="textSecondary">Type: {props.Type}</Typography>
-
+                 <Typography variant="body2" color="textSecondary"> Direccion: {props.RoomName}_______ Numero: {props.RoomName} _______ Email:{}</Typography>
+                    <Typography variant="body2" color="textSecondary">Ticket: {props.RoomName}_______ Date: {props.RoomName}</Typography>
+                    <Typography variant="body2" color="textSecondary"> Client ID: {props.Building} _______ Hora de Entrada: {props.RoomName} </Typography>
+                    <Typography variant="body2" color="textSecondary"> Company: {props.Department} _______ Hora de Salida: {props.RoomName}</Typography>
+                    <Typography variant="body2" color="textSecondary"> Vehicle License Plate: {props.Type}  _______       Model: {props.Type}</Typography>
+                     <Typography variant="body2" color="textSecondary"> Material: {props.Type} _______ Measurement type: {props.type}</Typography>
+                      <Typography variant="body2" color="textSecondary"> Measurement: {props.Type} _______ Cost: {props.type}</Typography>
+                      <Typography variant="body2" color="textSecondary"> Subtotal: {props.Type} </Typography>
+                      <Typography variant="body2" color="textSecondary"> Tax: {props.Type} _______ Driver Name: {props.type}</Typography>
+                      <Typography variant="body2" color="textSecondary"> Total: {props.Type} </Typography>
                 </CardContent>
             </Card>
             <Modal centered={false} open={open} onClose={() => setOpen(false)} onOpen={() => setOpen(true)}>
@@ -503,4 +508,4 @@ console.log(data)
     );
 }
 
-export default Vehicles;
+export default Ticket;
