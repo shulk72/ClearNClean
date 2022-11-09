@@ -71,22 +71,45 @@ function Ticket(props) {
             }
         );
     }
-function type1(parameter){
-        switch(parameter) {
-            case 'laboratory':
-                return 1
-            case 'classroom':
-                return 2
-            case 'office':
-                  return 3
-            case'study_space':
-                return 4
-            case
-                'conference_hall':
-                return 5
+function type1(parameter) {
+        switch (parameter) {
+            case 1:
+                return 'Domestico'
+            case 2:
+                return 'Agricultura'
+            case 3:
+                return 'Escombros de Constuccion'
+            case 4:
+                return 'Vegetativo'
+            case 5:
+                return 'Comercial'
+            case 6:
+                return 'Electro Domestico'
+            case 7:
+                return 'Chatarra Vehicular'
+            case 8:
+                return 'Metal'
+            case 9:
+                return 'Madera'
+            case 10:
+                return 'Tierra'
+            case 11:
+                return 'Ataudes'
+            case 12:
+                return 'Animales Muertos'
+            case 13:
+                return 'Otros'
         }
+    }
+    function type2(parameter) {
+            switch (parameter) {
+                case 1:
+                    return 'Cubic Yards'
+                case 2:
+                    return 'Tons'
 
-}
+            }
+        }
 
     useEffect(() => {
         if(typeof roomID !== "undefined") {

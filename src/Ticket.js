@@ -28,19 +28,19 @@ function Ticket(){
             case 6:
                 return 'Electro Domestico'
             case 7:
-                            return 'Chatarra Vehicular'
+                return 'Chatarra Vehicular'
             case 8:
-                            return 'Metal'
+                return 'Metal'
             case 9:
-                          return 'Madera'
+                return 'Madera'
             case 10:
-                          return 'Tierra'
+                return 'Tierra'
             case 11:
-                 return 'Ataudes'
+                return 'Ataudes'
             case 12:
-                            return 'Animales Muertos'
+                return 'Animales Muertos'
             case 13:
-                           return 'Otros'
+                return 'Otros'
         }
     }
     function type2(parameter) {
