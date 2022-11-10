@@ -16,7 +16,7 @@ function Ticket(props) {
     const [type, settype] = useState("");
     const [dept, setdept] = useState("");
     const [createdMessage, setCreatedMessage] = useState("");
-
+ const [Measurement, setMeasurement] = useState("");
     const [deleteMessage, setDeleteMessage] = useState("");
     const [roomData, setRoomData] = useState({});
     const [unavailability, setUnavailability] = useState(false);
@@ -319,7 +319,7 @@ console.log(data)
                 </CardContent>
             </Card>
             <Modal centered={false} open={open} onClose={() => setOpen(false)} onOpen={() => setOpen(true)}>
-                {props.type === "create" &&<Modal.Header>Create New Room</Modal.Header>}
+                {props.type === "create" &&<Modal.Header> Create New Ticket</Modal.Header>}
 
 
                 {
@@ -382,7 +382,10 @@ console.log(data)
                                         </select>
 
                                     </Form.Input>
-
+  <Form.Input
+                                        onChange={(e) => {setMeasurement(e.target.value);}}
+                                        label='Measurement'
+                                    />
 
                                 </Form>
                             </Grid.Column>
