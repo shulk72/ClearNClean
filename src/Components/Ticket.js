@@ -353,21 +353,31 @@ console.log(data)
                                         onChange={(e) => {setBuilding(e.target.value);}}
                                         label='building'
                                     />
-                                    <Form.Input label='Type'>
-                                        <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {settype(e.target.value);}}>
-                                            <option key={0} value={"0"}>Select Type</option>
-                                            {
-
-                                                ['laboratory','classroom', 'office','study_space','conference_hall'].map((item) => {return <option>{item}</option>})
-                                            }
-                                        </select>
+                                  <Form.Input label=' Material'>
+                                   <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setpermission(e.target.value);}}>
+                                    <option key={0} value={"0"}>Select Type</option>
+                                                                    {  ['Domestico',
+                                                                                            'Agricultura',
+                                                                                             'Escombros de Constuccion',
+                                                                                              'Vegetativo',
+                                                                                           'Comercial',
+                                                                                               'Electro Domestico',
+                                                                                              'Chatarra Vehicular',
+                                                                                             'Metal',
+                                                                                             'Madera',
+                                                                                             'Tierra'
+                                                                                               ,'Ataudes'
+                                                                                               , 'Animales Muertos', 'Otros'].map((item) => {return <option>{item}</option>})
+                                                                              }
+                                                                          </select>
 
                                     </Form.Input>
-                                    <Form.Input label='Deptarment'>
+                                    <Form.Input label='Measurement type'>
                                         <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setdept(e.target.value);}}>
                                             <option key={0} value={"0"}>Select Type</option>
                                             {
-                                                [ "ece","mate", "adem","fisi"].map((item) => {return <option>{item}</option>})
+                                                [ 'Cubic Yards',
+                                                                  'Tons'].map((item) => {return <option>{item}</option>})
                                             }
                                         </select>
 
