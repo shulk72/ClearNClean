@@ -24,9 +24,7 @@ const [isAuth, setIsAuth] = useState(false)
         {
             menuItem: 'Clients',
         },
-        {
-            menuItem: 'Account',
-        },
+
         {
             menuItem: 'Vehicles', render: () => <Vehicles/>
         }
