@@ -17,6 +17,7 @@ function Ticket(props) {
     const [dept, setdept] = useState("");
     const [createdMessage, setCreatedMessage] = useState("");
  const [Measurement, setMeasurement] = useState("");
+  const [comment, setcomment] = useState("");
     const [deleteMessage, setDeleteMessage] = useState("");
     const [roomData, setRoomData] = useState({});
     const [unavailability, setUnavailability] = useState(false);
@@ -397,7 +398,13 @@ console.log(data)
                                         label='Measurement'
                                     />
 
-                                </Form>
+                                                            <Form.Input
+                                                                        onChange={(e) => {setcomment(e.target.value);}}
+                                                                        label='Comentario'
+                                                                    />
+
+                                                                </Form>
+
                             </Grid.Column>
                         </Modal.Description>
                     }
