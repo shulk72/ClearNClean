@@ -25,9 +25,6 @@ const [isAuth, setIsAuth] = useState(false)
             menuItem: 'Clients',
         },
         {
-            menuItem: 'Reports',
-        },
-        {
             menuItem: 'Account',
         },
         {
