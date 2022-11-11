@@ -352,13 +352,13 @@ console.log(data)
                             <Grid.Column>
                                 <Form>
                                     <Form.Input
-                                        label="Room Name"
+                                        label="License Plate"
                                         value={name}
                                         onChange={e => setname(e.target.value)}
                                     />
                                     <Form.Input
                                         onChange={(e) => {setBuilding(e.target.value);}}
-                                        label='building'
+                                        label='Model'
                                     />
                                       <Form.Input
                                                                             onChange={(e) => {setBuilding(e.target.value);}}
