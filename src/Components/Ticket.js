@@ -62,7 +62,13 @@ function Ticket(props) {
             );
         }
     }
-
+    function clear(){
+        setBuilding="";
+     settype = "" ;
+     setdept= "";
+    setCreatedMessage="";
+   setMeasurement = "";
+    }
     function getRoomData(){
         axios.get(`https://booking-system-pika.herokuapp.com/pika-booking/rooms/${roomID}`).then((res) => {
                 setRoomData(res.data);
@@ -353,6 +359,10 @@ console.log(data)
                                         onChange={(e) => {setBuilding(e.target.value);}}
                                         label='building'
                                     />
+                                      <Form.Input
+                                                                            onChange={(e) => {setBuilding(e.target.value);}}
+                                                                            label='building'
+                                                                        />
                                   <Form.Input label=' Material'>
                                    <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setpermission(e.target.value);}}>
                                     <option key={0} value={"0"}>Select Type</option>
@@ -532,7 +542,8 @@ console.log(data)
                 </Modal.Content>
 
                 <Modal.Actions>
-                    {props.type === "create" && <Button onClick={createRoom}>Save</Button>}
+                    {props.type === "create" && <Button onClick={createRoom}>Submit</Button>}
+                    {props.type === "create" && <Button onClick={clear}>Clear</Button>}
                     {props.type === "update" && !unavailability && !schedule&&  <Button onClick={updateRoom}>Save</Button>}
                     {props.type === "update" && !unavailability &&  schedule && <Button onClick={() => setSchedule(false)} style={{marginTop: "15px"}}>Cancel</Button>}
                     {props.type === "update" && !unavailability && schedule && <Button onClick={() => {fetchRoomSchedule(); setCanShowSched(true);}}>Show Schedule</Button>}
