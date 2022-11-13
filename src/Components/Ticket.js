@@ -351,6 +351,20 @@ console.log(data)
                         <Modal.Description>
                             <Grid.Column>
                                 <Form>
+                                Company Information:
+                                   <Form.Input
+                                                                        onChange={(e) => {setBuilding(e.target.value);}}
+                                                                        label='Company'
+                                                                    />
+                                   <Form.Input
+                                                                        onChange={(e) => {setBuilding(e.target.value);}}
+                                                                        label='Representive'
+                                                                    />
+                                   <Form.Input
+                                                                        onChange={(e) => {setBuilding(e.target.value);}}
+                                                                        label='Last Visit'
+                                                                    />
+                                Vehicle Information:
                                     <Form.Input
                                         label="License Plate"
                                         value={name}
