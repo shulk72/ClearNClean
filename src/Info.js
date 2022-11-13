@@ -1,5 +1,4 @@
 import React, { useEffect, useState} from 'react';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from "axios";
 import {
     Grid,
