@@ -109,8 +109,38 @@ useEffect(()=> {
                                                         />
                                                       </Grid.Column>
                                                     </Form>
-                    <Grid columns={2} stackable textAlign='center'>
+                    <Grid columns={4} stackable textAlign='center'>
+  <Grid.Column>
+                                <h5> Client:
 
+                                        <table style={{marginLeft: "auto", marginRight: "auto"}}>
+                                            <thead>
+                                            <tr>
+                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>ID</th>
+                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Name</th>
+                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Company</th>
+                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Person name</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            {
+                                                BookedPersons.map(item => {
+                                                        return (
+                                                            <tr>
+                                                                <td style={{padding:"5px", border: "1px solid black"}}>{}</td>
+                                                                <td style={{padding:"5px", border: "1px solid black"}}>{}_{}</td>
+                                                            </tr>
+                                                        )
+                                                    }
+                                                )
+                                            }
+                                            </tbody>
+                                        </table>
+
+                                    </h5>
+
+                            </Grid.Column>
 
                     </Grid>
                 </Segment>
