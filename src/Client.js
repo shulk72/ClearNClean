@@ -93,12 +93,12 @@ useEffect(()=> {
 
             <Segment>
                 <Segment placeholder>
-                    Client
                   <Form>
+
                                                  <Grid.Column width={6}>
                                                         <Search
                                                           loading={loading}
-                                                          placeholder='Search...'
+                                                          placeholder='Search for Clients...'
                                                          style={{textAlign: "center"}}
                                                           onResultSelect={(e, data) =>
                                                             dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
