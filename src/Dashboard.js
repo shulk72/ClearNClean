@@ -8,6 +8,7 @@ import HomePage from "./HomePage";
 import Info from "./Info"
 import Vehicles from "./Vehicles"
 import Ticket from "./Ticket"
+import Client from "./Client"
 import {Link} from "react-router-dom";
 export default
 function Dashboard(){
@@ -22,7 +23,7 @@ const [isAuth, setIsAuth] = useState(false)
             menuItem: 'Info', render: () => <Info/>
         },
         {
-            menuItem: 'Clients',
+            menuItem: 'Clients', render: () => <Client/>
         },
 
         {

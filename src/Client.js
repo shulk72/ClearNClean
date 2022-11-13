@@ -1,11 +1,39 @@
 import React, { useEffect, useState} from 'react';
 import axios from "axios";
+import _ from 'lodash'
+
 import {
     Grid,
-    Segment, Form
+    Segment, Form, Search
 } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
-export default
+const source = _.times(5, () => ({
+
+}))
+
+const initialState = {
+  loading: false,
+  results: [],
+  value: '',
+}
+
+function exampleReducer(state, action) {
+  switch (action.type) {
+    case 'CLEAN_QUERY':
+      return initialState
+    case 'START_SEARCH':
+      return { ...state, loading: true, value: action.query }
+    case 'FINISH_SEARCH':
+      return { ...state, loading: false, results: action.results }
+    case 'UPDATE_SELECTION':
+      return { ...state, value: action.selection }
+
+    default:
+      throw new Error()
+  }
+}
+
+
 function Client(){
 
 
@@ -14,6 +42,29 @@ function Client(){
         const [BookedRooms, setBookedRooms] = useState([]);
     const [ BusiestHours, setBusiestHours] = useState([]);
     const [t,sett]= useState(false);
+   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
+     const { loading, results, value } = state
+
+     const timeoutRef = React.useRef()
+     const handleSearchChange = React.useCallback((e, data) => {
+       clearTimeout(timeoutRef.current)
+       dispatch({ type: 'START_SEARCH', query: data.value })
+
+       timeoutRef.current = setTimeout(() => {
+         if (data.value.length === 0) {
+           dispatch({ type: 'CLEAN_QUERY' })
+           return
+         }
+
+         const re = new RegExp(_.escapeRegExp(data.value), 'i')
+         const isMatch = (result) => re.test(result.title)
+
+         dispatch({
+           type: 'FINISH_SEARCH',
+           results: _.filter(source, isMatch),
+         })
+       }, 300)
+     }, [])
    function  componentDidMount() {
 if (t===false) {
     axios.get('https://booking-system-pika.herokuapp.com/pika-booking/persons/most-booked').then(res => {
@@ -42,59 +93,24 @@ useEffect(()=> {
 
             <Segment>
                 <Segment placeholder>
-
+                    Client
                   <Form>
-                                                    <Form.Input label='Time'>
-                                                        <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {}}>
-                                                            <option key={0} value={"0"}>Daily</option>
-                                                            <option key={1} value={"1"}>Weekly</option>
-                                                            <option key={2} value={"2"}>Monthly</option>
-                                                            <option key={3} value={"3"}>Yearly</option>
-                                                        </select>
-                                                    </Form.Input>
+                                                 <Grid.Column width={6}>
+                                                        <Search
+                                                          loading={loading}
+                                                          placeholder='Search...'
+                                                         style={{textAlign: "center"}}
+                                                          onResultSelect={(e, data) =>
+                                                            dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
+                                                          }
+                                                          onSearchChange={handleSearchChange}
+                                                          results={results}
+                                                          value={value}
+                                                        />
+                                                      </Grid.Column>
                                                     </Form>
                     <Grid columns={2} stackable textAlign='center'>
 
-                            <Grid.Column>
-                                <h5> Revenue:    (Per Material)
-                                    <li>
-                                        <table style={{marginLeft: "auto", marginRight: "auto"}}>
-                                            <thead>
-                                            <tr>
-                                                <th>Domestic: </th>
-
-
-
-                                            </tr>
-                                            <th>Vegetative:</th>
-                                            </thead>
-
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                            </li>
-                                    </h5>
-
-                            </Grid.Column>
-
-
-
-                            <Grid.Column>
-                                <h5> Volume:  (Per Material)<ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
-                                    <thead>
-                                    <tr>
-                                       <th>Domestic: </th>
-
-
-
-
-
-                                    </tr>
-                                    <th>Vegetative:</th>
-                                    </thead>
-                                </table> </ul> </h5>
-                            </Grid.Column>
 
                     </Grid>
                 </Segment>
@@ -102,3 +118,4 @@ useEffect(()=> {
         </>
 
 }
+export default Client
