@@ -130,6 +130,8 @@ useEffect(()=> {
                                                             <tr>
                                                                 <td style={{padding:"5px", border: "1px solid black"}}>{}</td>
                                                                 <td style={{padding:"5px", border: "1px solid black"}}>{}_{}</td>
+                                                                   <td style={{padding:"5px", border: "1px solid black"}}>{}</td>
+                                                                  <td style={{padding:"5px", border: "1px solid black"}}>{}_{}</td>
                                                             </tr>
                                                         )
                                                     }
