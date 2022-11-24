@@ -39,8 +39,6 @@ function Client(){
 
 
         const [BookedPersons, setBookedPerson] = useState([]);
-        const [BookedRooms, setBookedRooms] = useState([]);
-    const [ BusiestHours, setBusiestHours] = useState([]);
     const [t,sett]= useState(false);
    const [state, dispatch] = React.useReducer(exampleReducer, initialState)
      const { loading, results, value } = state
@@ -71,15 +69,6 @@ if (t===false) {
 
         setBookedPerson(res.data);
 
-        console.log(res.data)
-    })
-    axios.get('https://booking-system-pika.herokuapp.com/pika-booking/rooms/most-booked').then(res => {
-        let BookedRoom = res.data
-        setBookedRooms(BookedRoom);
-console.log(BookedRoom)
-    })
-    axios.get('https://booking-system-pika.herokuapp.com/pika-booking/booking/busiesthour').then(res => {
-        setBusiestHours(res.data)
         console.log(res.data)
     })
     sett(true)

@@ -57,7 +57,7 @@ useEffect(()=> {
 
                             <Grid.Column>
                                 <h5> Revenue:    (Per Material)
-                                    <li>
+
                                         <table style={{marginLeft: "auto", marginRight: "auto"}}>
                                             <thead>
                                             <tr>
@@ -73,7 +73,7 @@ useEffect(()=> {
 
                                             </tbody>
                                         </table>
-                                            </li>
+
                                     </h5>
 
                             </Grid.Column>
