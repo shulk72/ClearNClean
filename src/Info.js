@@ -58,7 +58,7 @@ useEffect(()=> {
                             <Grid.Column>
                                 <h5> Revenue:    (Per Material)
 
-                                        <table style={{marginLeft: "auto", marginRight: "auto"}}>
+                                        <table style={{marginLeft: "auto", marginRight: "auto"}}> <ul>
                                             <thead>
                                             <tr>
                                                 <th>Domestic: </th>
@@ -68,7 +68,7 @@ useEffect(()=> {
                                             </tr>
                                             <th>Vegetative:</th>
                                             </thead>
-
+                                             </ul>
                                             <tbody>
 
                                             </tbody>
