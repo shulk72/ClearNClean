@@ -7,9 +7,9 @@ import {
         Grid,
         Header,
         Modal,
-        Segment
+        Segment, Image
 } from 'semantic-ui-react';
-
+import Logo from './/Assets/Log.jpg';
 import axios from "axios";
 function HomePage() {
     const [open, setOpen] = useState(false);
@@ -24,7 +24,7 @@ function HomePage() {
     }
     const navigate = useNavigate();
     function check() {
-
+       return true
 
         axios.post('https://booking-system-pika.herokuapp.com/pika-booking/persons/accounts', {"p_email": email, "p_password": password}).then(res=>
         {
@@ -42,6 +42,7 @@ function HomePage() {
         <>
         <Segment>
             <Header dividing textAlign="center" size="huge">Welcome to ClearNClean</Header>
+
             <Modal
                 centered={false}
             open={open}
@@ -60,7 +61,8 @@ function HomePage() {
         </Modal.Actions>
         </Modal>
     <Segment placeholder>
-        <Grid columns={2} relaxed='very' stackable>
+    <h1>  <Image src={Logo} size='small' rounded  centered/></h1>
+        <Grid columns={1} relaxed='very' stackable>
         <Grid.Column>
             <Form>
                 <Form.Input
@@ -79,14 +81,11 @@ function HomePage() {
                     value={password}
                 onChange={e => setPassword(e.target.value)}
                 />
-                <Button content='Login' primary onClick={check()? handleChange:handleLogin}/>
+                <Button content='Login' primary onClick={handleLogin}/>
             </Form>
         </Grid.Column>
-        <Grid.Column verticalAlign='middle'>
-            <Button content='Sign up' icon='signup' size='big' onClick={() => {navigate("./Dashboard")}}/>
-        </Grid.Column>
     </Grid>
-    <Divider vertical>Or</Divider>
+
 </Segment>
 </Segment>
 </>

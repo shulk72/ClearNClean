@@ -54,7 +54,7 @@ function Ticket(){
         }
 
     function getTicket(){
-        axios.get(`https://booking-system-pika.herokuapp.com/pika-booking/rooms`).then((res) => {
+        axios.get(`https://Clean-N-Clear.herokuapp.com//CleanNClear/tickets`).then((res) => {
                 setRooms(res.data);
                     console.log(res.data)
 
