@@ -24,7 +24,7 @@ class Client extends Component {
      const res = await axios(
        `https://cleanncleardb2.herokuapp.com/CleanNClear/clients/${this.state.value}/`
      );
-     const clients = await res.data.results;
+     const clients = await res.data;
 
      this.setState({ clients, loading: false });
    };
