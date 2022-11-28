@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState,  Component } from 'react';
 import axios from "axios";
 import _ from 'lodash'
 
@@ -7,136 +7,53 @@ import {
     Segment, Form, Search
 } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
+import Rooms from "./Components/Client";
 const source = _.times(5, () => ({
 
 }))
 
-const initialState = {
-  loading: false,
-  results: [],
-  value: '',
-}
+class Client extends Component {
+   state = {
+     clients: null,
+     loading: false,
+     value: ''
+   };
 
-function exampleReducer(state, action) {
-  switch (action.type) {
-    case 'CLEAN_QUERY':
-      return initialState
-    case 'START_SEARCH':
-      return { ...state, loading: true, value: action.query }
-    case 'FINISH_SEARCH':
-      return { ...state, loading: false, results: action.results }
-    case 'UPDATE_SELECTION':
-      return { ...state, value: action.selection }
+   search = async val => {
+     this.setState({ loading: true });
+     const res = await axios(
+       `https://api.themoviedb.org/3/search/movie?query=${val}&api_key=dbc0a6d62448554c27b6167ef7dabb1b`
+     );
+     const clients = await res.data.results;
 
-    default:
-      throw new Error()
-  }
-}
+     this.setState({ clients, loading: false });
+   };
 
+   onChangeHandler = async e => {
+     this.search(e.target.value);
+     this.setState({ value: e.target.value });
+   };
 
-function Client(){
+   get renderclients() {
+     let clients = <h1>Theres no clients</h1>;
+     if (this.state.movies) {
+       clients = <Rooms list={this.state.client} />;
+     }
 
+     return clients;
+   }
 
-
-        const [BookedPersons, setBookedPerson] = useState([]);
-    const [t,sett]= useState(false);
-   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
-     const { loading, results, value } = state
-
-     const timeoutRef = React.useRef()
-     const handleSearchChange = React.useCallback((e, data) => {
-       clearTimeout(timeoutRef.current)
-       dispatch({ type: 'START_SEARCH', query: data.value })
-
-       timeoutRef.current = setTimeout(() => {
-         if (data.value.length === 0) {
-           dispatch({ type: 'CLEAN_QUERY' })
-           return
-         }
-
-         const re = new RegExp(_.escapeRegExp(data.value), 'i')
-         const isMatch = (result) => re.test(result.title)
-
-         dispatch({
-           type: 'FINISH_SEARCH',
-           results: _.filter(source, isMatch),
-         })
-       }, 300)
-     }, [])
-   function  componentDidMount() {
-if (t===false) {
-    axios.get('https://booking-system-pika.herokuapp.com/pika-booking/persons/most-booked').then(res => {
-
-        setBookedPerson(res.data);
-
-        console.log(res.data)
-    })
-    sett(true)
-}
-    }
-
-useEffect(()=> {
-    componentDidMount()
-})
-        return <>
-
-            <Segment>
-                <Segment placeholder>
-                  <Form>
-
-                                                 <Grid.Column width={6}>
-                                                        <Search
-                                                          loading={loading}
-                                                          placeholder='Search for Clients...'
-                                                         style={{textAlign: "center"}}
-                                                          onResultSelect={(e, data) =>
-                                                            dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
-                                                          }
-                                                          onSearchChange={handleSearchChange}
-                                                          results={results}
-                                                          value={value}
-                                                        />
-                                                      </Grid.Column>
-                                                    </Form>
-                    <Grid columns={4} stackable textAlign='center'>
-  <Grid.Column>
-                                <h5> Client:
-
-                                        <table style={{marginLeft: "auto", marginRight: "auto"}}>
-                                            <thead>
-                                            <tr>
-                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>ID</th>
-                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Name</th>
-                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Company</th>
-                                                <th style={{padding:"5px", border: "1px solid black"}} scope={"col"}>Person name</th>
-                                            </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            {
-                                                BookedPersons.map(item => {
-                                                        return (
-                                                            <tr>
-                                                                <td style={{padding:"5px", border: "1px solid black"}}>{}</td>
-                                                                <td style={{padding:"5px", border: "1px solid black"}}>{}_{}</td>
-                                                                   <td style={{padding:"5px", border: "1px solid black"}}>{}</td>
-                                                                  <td style={{padding:"5px", border: "1px solid black"}}>{}_{}</td>
-                                                            </tr>
-                                                        )
-                                                    }
-                                                )
-                                            }
-                                            </tbody>
-                                        </table>
-
-                                    </h5>
-
-                            </Grid.Column>
-
-                    </Grid>
-                </Segment>
-            </Segment>
-        </>
-
-}
+   render() {
+     return (
+       <div>
+         <input
+           value={this.state.value}
+           onChange={e => this.onChangeHandler(e)}
+           placeholder="Type something to search"
+         />
+         {this.renderclients}
+       </div>
+     );
+   }
+ }
 export default Client
