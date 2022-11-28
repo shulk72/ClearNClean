@@ -22,7 +22,7 @@ class Client extends Component {
    search = async val => {
      this.setState({ loading: true });
      const res = await axios(
-       `https://api.themoviedb.org/3/search/movie?query=${val}&api_key=dbc0a6d62448554c27b6167ef7dabb1b`
+       `https://cleanncleardb2.herokuapp.com/CleanNClear/clients/${this.state.value}/`
      );
      const clients = await res.data.results;
 

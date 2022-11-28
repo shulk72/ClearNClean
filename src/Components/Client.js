@@ -64,9 +64,9 @@ function Client(props) {
 
 
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary">: License Plate:{props.RoomName}</Typography>
-                    <Typography variant="body2" color="textSecondary"> Model: {props.Building}</Typography>
-                    <Typography variant="body2" color="textSecondary">Driver: {props.Department}</Typography>
+                    <Typography variant="body2" color="textSecondary">: Company:{props.RoomName}</Typography>
+                    <Typography variant="body2" color="textSecondary"> Representive: {props.Building}</Typography>
+                    <Typography variant="body2" color="textSecondary">ID: {props.Department}</Typography>
 
 
                 </CardContent>
