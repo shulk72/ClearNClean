@@ -36,8 +36,8 @@ class Client extends Component {
 
    get renderclients() {
      let clients = <h1>Theres no clients</h1>;
-     if (this.state.movies) {
-       clients = <Rooms list={this.state.client} />;
+     if (this.state.clients) {
+       clients = <Rooms list={this.state.clients} />;
      }
 
      return clients;
