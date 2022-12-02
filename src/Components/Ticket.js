@@ -15,8 +15,10 @@ function Ticket(props) {
     const [Building, setBuilding] = useState("");
     const [type, settype] = useState("");
     const [dept, setdept] = useState("");
+    const [ Material, setMaterial] = useState("");
     const [createdMessage, setCreatedMessage] = useState("");
- const [Measurement, setMeasurement] = useState("");
+  const [Measurement, setMeasurement] = useState("");
+
   const [comment, setcomment] = useState("");
     const [deleteMessage, setDeleteMessage] = useState("");
     const [roomData, setRoomData] = useState({});
@@ -45,10 +47,13 @@ function Ticket(props) {
             setCreatedMessage("Failed to create room, invalid parameters");
         } else {
             console.log("Creating Room")
-            let data = { "r_building": Building,
+            let data = { "building": Building,
                 "r_name": name,
                 "r_dept": dept,
-                "r_type": type1(type)}
+                "r_type": type1(type)
+
+
+                }
             axios.post(`https://booking-system-pika.herokuapp.com/pika-booking/rooms`, data
             ).then(
                 (res) => {
@@ -225,49 +230,6 @@ console.log(data)
         setallDay([]);
     }
 
-    function fetchUnavailableTimeSlots(){
-        axios.get(`https://booking-system-pika.herokuapp.com/pika-booking/rooms/unavailable/${roomID}`).then(
-                (res) => {
-
-                    let unavailableTS = []
-console.log(res.data)
-                    for(let day of res.data){
-                        const st = day.st_dt
-                        const et =  day.et_dt
-                        console.log(res.data)
-
-                            const w = {start: st, end: et, ra_id: day.ra_id}
-                            console.log(w)
-                            unavailableTS.push(w)
-
-                    }
-                    setUnavailableTimeSlots(unavailableTS);
-                }
-            );
-    }
-
-    function fetchRoomSchedule(){
-        let day = `${roomSchedule.getFullYear()}-${roomSchedule.getMonth() + 1}-${roomSchedule.getDate()}`;
-        const data = {"room_id": roomID, "date": day};
-console.log(data)
-        axios.post(`https://booking-system-pika.herokuapp.com/pika-booking/rooms/available/all-day-schedule`, data,
-                    ).then((res) => {
-            let result = []
-            let i=0;
-            console.log(res.data)
-            for(let ts of res.data){
-                const Start = ` ${ts.st_dt}-0400 (Atlantic Standard Time)`
-                const End = `${ts.et_dt}-0400 (Atlantic Standard Time)`;
-                const startDate = new Date(Start);
-                const endDate = new Date(End);
-                result.push({start: startDate, end: endDate,  p_fname: ts.p_fname, b_name:ts.b_name , p_lname: ts.p_lname})
-                i++
-            }
-            setallDay(result)
-        },(error) => {
-            console.log(error);
-        });
-    }
 
     function TypeTime(hours, minutes){
 
@@ -329,21 +291,6 @@ console.log(data)
                 {props.type === "create" &&<Modal.Header> Create New Ticket</Modal.Header>}
 
 
-                {
-                    props.type === "update" && !unavailability && !schedule &&
-                    <Modal.Header>
-                        Update Room <br/>
-                        <Button onClick={() => {fetchUnavailableTimeSlots(); setUnavailability(true); }} style={{marginTop: "15px"}}>
-                            Change Availability
-                        </Button>
-                        <Button onClick={() => {setSchedule(true);}} style={{marginTop: "15px"}}>
-                            Schedule
-                        </Button>
-                    </Modal.Header>
-                }
-
-                {props.type === "update" && unavailability && <Modal.Header>Change availability for {props.roomName}</Modal.Header>}
-                {props.type === "update" && schedule && <Modal.Header>See Schedule for {props.roomName}</Modal.Header>}
 
                 <Modal.Content>
                     {
@@ -374,10 +321,6 @@ console.log(data)
                                         onChange={(e) => {setBuilding(e.target.value);}}
                                         label='Model'
                                     />
-                                      <Form.Input
-                                                                            onChange={(e) => {setBuilding(e.target.value);}}
-                                                                            label='building'
-                                                                        />
                                   <Form.Input label=' Material'>
                                    <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setpermission(e.target.value);}}>
                                     <option key={0} value={"0"}>Select Type</option>
@@ -567,7 +510,6 @@ console.log(data)
                     {props.type === "create" && <Button onClick={clear}>Clear</Button>}
                     {props.type === "update" && !unavailability && !schedule&&  <Button onClick={updateRoom}>Save</Button>}
                     {props.type === "update" && !unavailability &&  schedule && <Button onClick={() => setSchedule(false)} style={{marginTop: "15px"}}>Cancel</Button>}
-                    {props.type === "update" && !unavailability && schedule && <Button onClick={() => {fetchRoomSchedule(); setCanShowSched(true);}}>Show Schedule</Button>}
                     {props.type === "update" && unavailability && <Button onClick={() => setUnavailability(false)} style={{marginTop: "15px"}}>Cancel</Button>}
 
                 </Modal.Actions>

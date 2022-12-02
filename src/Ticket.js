@@ -12,6 +12,7 @@ function Ticket(){
        const [rooms, setRooms] = useState([]);
        const data = localStorage.getItem('login-data');
        const dat = JSON.parse(data);
+ const [darkMode, setDarkMode] = React.useState(false);
 
     function type1(parameter) {
         switch (parameter) {
@@ -66,6 +67,7 @@ function Ticket(){
     useEffect(() => {
 
         getTicket();
+         document.body.classList.add("dark");
         console.log(rooms)
     }, []);
 

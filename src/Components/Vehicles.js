@@ -38,33 +38,10 @@ function Vehicles(props) {
     const [permission,setpermission] =useState("");
     const[y,sety]= useState("")
 
-    function createRoom(){
-        if(  type==="" || Building==="" || dept===""){
-            console.log("Empty Field")
-            setCreatedMessage("Failed to create room, invalid parameters");
-        } else {
-            console.log("Creating Room")
-            let data = { "r_building": Building,
-                "r_name": name,
-                "r_dept": dept,
-                "r_type": type1(type)}
-            axios.post(`https://booking-system-pika.herokuapp.com/pika-booking/rooms`, data
-            ).then(
-                (res) => {
-                    console.log(res);
-                    setCreatedMessage("Room Successfully Created");
-                    console.log(createdMessage);
-                    window.location.reload(false);
-                }, (error) => {
-                    console.log(error);
-                    setCreatedMessage("Failed to create room, invalid parameters");
-                }
-            );
-        }
-    }
+
 
     function getVehicleData(){
-        axios.get(`https://booking-system-pika.herokuapp.com/pika-booking/rooms/${roomID}`).then((res) => {
+        axios.get(`https://cleanncleardb2.herokuapp.com/CleanNClear/vehicles/${roomID}`).then((res) => {
                 setRoomData(res.data);
             }, (error) => {
                 console.log(error);
@@ -104,9 +81,9 @@ function type1(parameter){
 
 
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary">: License Plate:{props.RoomName}</Typography>
-                    <Typography variant="body2" color="textSecondary"> Model: {props.Building}</Typography>
-                    <Typography variant="body2" color="textSecondary">Driver: {props.Department}</Typography>
+                    <Typography variant="body2" color="textSecondary">License Plate:{props.RoomName}</Typography>
+                                     <Typography variant="body2" color="textSecondary"> Model: {props.Building}</Typography>
+                                     <Typography variant="body2" color="textSecondary">Driver: {props.Department}</Typography>
 
 
                 </CardContent>

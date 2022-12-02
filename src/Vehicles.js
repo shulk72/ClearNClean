@@ -29,7 +29,7 @@ function Vehicles(){
         }
     }
     function getRooms(){
-        axios.get(`https://booking-system-pika.herokuapp.com/pika-booking/rooms`).then((res) => {
+        axios.get(`https://cleanncleardb2.herokuapp.com/CleanNClear/vehicles`).then((res) => {
                 setRooms(res.data);
                     console.log(res.data)
 

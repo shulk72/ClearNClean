@@ -31,6 +31,13 @@ const [isAuth, setIsAuth] = useState(false)
             menuItem: 'Vehicles', render: () => <Vehicles/>
         }
     ]
+ const [darkMode, setDarkMode] = React.useState(true);
+ useEffect(() => {
+
+document.body.classList.add('dark');
+         document.body.classList.add("dark");
+
+    }, [darkMode]);
 
     return <>
     <h1>  <Image src={Logo} size='small' rounded /></h1>
