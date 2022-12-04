@@ -18,8 +18,9 @@ function Ticket(props) {
     const [ Material, setMaterial] = useState("");
     const [createdMessage, setCreatedMessage] = useState("");
   const [Measurement, setMeasurement] = useState("");
-
+  const [Mtype, setMtype] = useState("");
   const [comment, setcomment] = useState("");
+  const [compinfo,setcompinfo]= useState("");
     const [deleteMessage, setDeleteMessage] = useState("");
     const [roomData, setRoomData] = useState({});
     const [unavailability, setUnavailability] = useState(false);
@@ -68,7 +69,9 @@ function Ticket(props) {
             );
         }
     }
-    function clear(){
+function getcompanyinfo(){
+}
+function clear(){
         setBuilding="";
      settype = "" ;
      setdept= "";
