@@ -11,6 +11,7 @@ import Ticket from "./Ticket"
 import Client from "./Client"
 import {Link} from "react-router-dom";
 import Logo from './/Assets/Log.jpg';
+import Logout from "./Logout";
 export default
 function Dashboard(){
 
@@ -29,7 +30,11 @@ const [isAuth, setIsAuth] = useState(false)
 
         {
             menuItem: 'Vehicles', render: () => <Vehicles/>
-        }
+        },
+         {
+                    menuItem: 'Log out', render: () => <Logout/>
+                },
+
     ]
  const [darkMode, setDarkMode] = React.useState(true);
  useEffect(() => {
