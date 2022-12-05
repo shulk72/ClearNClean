@@ -24,7 +24,18 @@ if (t===false) {
     })
 }
     }
-
+function type (parameter, value){
+   switch (parameter) {
+           case 0:
+                return value
+            case 1:
+                return  7*value
+            case 2:
+                return 30*value
+            case 3:
+                return  365*value
+                }
+}
 useEffect(()=> {
     componentDidMount()
 })
