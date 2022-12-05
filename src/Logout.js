@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from 'react';
 import {
     Button,
@@ -14,6 +15,7 @@ import axios from "axios";
 
 
 function Logout() {
+ const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [t, sett] = useState(false);
     const [r, setr] = useState(false);
@@ -36,7 +38,8 @@ function Logout() {
     }
     function y()  {
       localStorage.removeItem("login-data")
-      setg(true)
+             navigate("/")
+
     }
     const q = () => {
         sett(true)
