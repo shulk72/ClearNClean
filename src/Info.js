@@ -9,12 +9,12 @@ export default
 function Info(){
 
 
-
+ const [ty,setty]= useState("");
         const [BookedPersons, setBookedPerson] = useState([]);
         const [BookedRooms, setBookedRooms] = useState([]);
     const [ BusiestHours, setBusiestHours] = useState([]);
     const [t,sett]= useState(false);
-   function  componentDidMount() {
+function  componentDidMount() {
 if (t===false) {
     axios.get('https://booking-system-pika.herokuapp.com/pika-booking/persons/most-booked').then(res => {
 
@@ -26,13 +26,13 @@ if (t===false) {
     }
 function type (parameter, value){
    switch (parameter) {
-           case 0:
+           case 'Daily':
                 return value
-            case 1:
+            case 'Weekly':
                 return  7*value
-            case 2:
+            case 'Monthly':
                 return 30*value
-            case 3:
+            case 'Yearly':
                 return  365*value
                 }
 }
@@ -45,12 +45,13 @@ useEffect(()=> {
                 <Segment placeholder>
 
                   <Form>
-                                                    <Form.Input label='Time'>
-                                                        <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {}}>
-                                                            <option key={0} value={"0"}>Daily</option>
-                                                            <option key={1} value={"1"}>Weekly</option>
-                                                            <option key={2} value={"2"}>Monthly</option>
-                                                            <option key={3} value={"3"}>Yearly</option>
+                                                  <Form.Input label='Time'>
+                                                        <select defaultValue={"Daily"} style={{textAlign: "center"}} onChange={(e) => {setty(e.target.value)}}>
+                                                            <option key={0} value={'Daily'}>Daily</option>
+                                                             {
+
+                                                            ['Weekly','Monthly','Yearly' ].map((item) => {return <option>{item}</option>})
+                                                                                                           }
                                                         </select>
                                                     </Form.Input>
                                                     </Form>
@@ -62,12 +63,12 @@ useEffect(()=> {
                                         <table style={{marginLeft: "auto", marginRight: "auto"}}> <ul>
                                             <thead>
                                             <tr>
-                                                <th>Domestic: </th>
+                                                <th>Domestic: {type(ty,1)}</th>
 
 
 
                                             </tr>
-                                            <th>Vegetative:</th>
+                                            <th>Vegetative: {type(ty,1)}</th>
                                             </thead>
                                              </ul>
                                             <tbody>
@@ -85,14 +86,14 @@ useEffect(()=> {
                                 <h5> Volume:  (Per Material)<ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
                                     <thead>
                                     <tr>
-                                       <th>Domestic: </th>
+                                       <th>Domestic: {type(ty,2)}</th>
 
 
 
 
 
                                     </tr>
-                                    <th>Vegetative:</th>
+                                    <th>Vegetative: {type(ty,3)}</th>
                                     </thead>
                                 </table> </ul> </h5>
                             </Grid.Column>
