@@ -17,12 +17,12 @@ function Dashboard(){
 
 const [isAuth, setIsAuth] = useState(false)
     const panes = [
+      {
+                menuItem: 'Info', render: () => <Info/>
+            },
 
         {
             menuItem: 'Tickets', render: () => <Ticket/>
-        },
-        {
-            menuItem: 'Info', render: () => <Info/>
         },
         {
             menuItem: 'Clients', render: () => <Client/>
