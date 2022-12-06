@@ -15,14 +15,13 @@ function Info(){
     const [ BusiestHours, setBusiestHours] = useState([]);
     const [t,sett]= useState(false);
 function  componentDidMount() {
-if (t===false) {
     axios.get('https://booking-system-pika.herokuapp.com/pika-booking/persons/most-booked').then(res => {
 
         setBookedPerson(res.data);
 
         console.log(res.data)
     })
-}
+
     }
 function type (parameter, value){
    switch (parameter) {
@@ -46,11 +45,11 @@ useEffect(()=> {
 
                   <Form>
                                                   <Form.Input label='Time'>
-                                                        <select defaultValue={"Daily"} style={{textAlign: "center"}} onChange={(e) => {setty(e.target.value)}}>
-                                                            <option key={0} value={'Daily'}>Daily</option>
+                                                        <select defaultValue={'Daily'} style={{textAlign: "center"}} onChange={(e) => {setty(e.target.value)}}>
+                                                            <option key={0} value={'0'}>Select time frame</option>
                                                              {
 
-                                                            ['Weekly','Monthly','Yearly' ].map((item) => {return <option>{item}</option>})
+                                                            ['Daily','Weekly','Monthly','Yearly' ].map((item) => {return <option>{item}</option>})
                                                                                                            }
                                                         </select>
                                                     </Form.Input>
