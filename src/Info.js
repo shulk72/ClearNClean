@@ -11,8 +11,6 @@ function Info(){
 
  const [ty,setty]= useState("");
         const [BookedPersons, setBookedPerson] = useState([]);
-        const [BookedRooms, setBookedRooms] = useState([]);
-    const [ BusiestHours, setBusiestHours] = useState([]);
     const [t,sett]= useState(false);
 function  componentDidMount() {
     axios.get('https://booking-system-pika.herokuapp.com/pika-booking/persons/most-booked').then(res => {
@@ -45,7 +43,7 @@ useEffect(()=> {
 
                   <Form>
                                                   <Form.Input label='Time'>
-                                                        <select defaultValue={'Daily'} style={{textAlign: "center"}} onChange={(e) => {setty(e.target.value)}}>
+                                                        <select defaultValue={'0'} style={{textAlign: "center"}} onChange={(e) => {setty(e.target.value)}}>
                                                             <option key={0} value={'0'}>Select time frame</option>
                                                              {
 
@@ -85,14 +83,14 @@ useEffect(()=> {
                                 <h5> Volume:  (Per Material)<ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
                                     <thead>
                                     <tr>
-                                       <th>Domestic: {type(ty,2)}</th>
+                                       <th>Domestic: {type(ty,2)} cm^2</th>
 
 
 
 
 
                                     </tr>
-                                    <th>Vegetative: {type(ty,3)}</th>
+                                    <th>Vegetative: {type(ty,3)} cm^2</th>
                                     </thead>
                                 </table> </ul> </h5>
                             </Grid.Column>

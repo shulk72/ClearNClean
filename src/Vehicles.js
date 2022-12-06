@@ -53,11 +53,10 @@ return <>
                         {Array.from(Array(rooms.length)).map((_, i) => (
                             <Rooms
 
-                                RoomName = {`${rooms[i].r_name}`}
-                                Building= {`${rooms[i].r_building}`}
-                                Department= {`${rooms[i].r_department}`}
-                                Type= {`${type1(rooms[i].r_type)}`}
-                                Room_id = {rooms[i].r_id}
+                                License Plate = {`${rooms[i].licenseplate}`}
+                                Model= {`${rooms[i].model}`}
+                                Brand = {`${rooms[i].brand}`}
+
                                 type={"update"}/>
                         ))}
                         <Grid justify={"center"} container item xs={12} md={6} lg={4}>

@@ -81,9 +81,9 @@ function type1(parameter){
 
 
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary">License Plate:{props.RoomName}</Typography>
-                                     <Typography variant="body2" color="textSecondary"> Model: {props.Building}</Typography>
-                                     <Typography variant="body2" color="textSecondary">Driver: {props.Department}</Typography>
+                    <Typography variant="body2" color="textSecondary">License Plate:{props.licenseplate}</Typography>
+                                     <Typography variant="body2" color="textSecondary"> Model: {props.model}</Typography>
+                                     <Typography variant="body2" color="textSecondary">Brand: {props.brand}</Typography>
 
 
                 </CardContent>
