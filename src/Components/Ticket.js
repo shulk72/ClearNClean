@@ -511,9 +511,6 @@ console.log(data)
                 <Modal.Actions>
                     {props.type === "create" && <Button onClick={createRoom}>Submit</Button>}
                     {props.type === "create" && <Button onClick={clear}>Clear</Button>}
-                    {props.type === "update" && !unavailability && !schedule&&  <Button onClick={updateRoom}>Save</Button>}
-                    {props.type === "update" && !unavailability &&  schedule && <Button onClick={() => setSchedule(false)} style={{marginTop: "15px"}}>Cancel</Button>}
-                    {props.type === "update" && unavailability && <Button onClick={() => setUnavailability(false)} style={{marginTop: "15px"}}>Cancel</Button>}
 
                 </Modal.Actions>
             </Modal>
