@@ -39,7 +39,7 @@ function Client(props) {
     const[y,sety]= useState("")
 
 
-    function getVehicleData(){
+    function getclientData(){
         axios.get(`https://booking-system-pika.herokuapp.com/pika-booking/rooms/${roomID}`).then((res) => {
                 setRoomData(res.data);
             }, (error) => {
@@ -50,7 +50,7 @@ function Client(props) {
 
     useEffect(() => {
         if(typeof roomID !== "undefined") {
-            getVehicleData();
+            getclientData();
         }
     }, []);
 
@@ -64,9 +64,9 @@ function Client(props) {
 
 
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary">Company:{props.RoomName}</Typography>
-                    <Typography variant="body2" color="textSecondary"> Representive: {props.Building}</Typography>
-                    <Typography variant="body2" color="textSecondary">ID: {props.Department}</Typography>
+                    <Typography variant="body2" color="textSecondary">Company:{props.company}</Typography>
+                    <Typography variant="body2" color="textSecondary"> Representive: {props.firstname} {props.lastname}</Typography>
+                    <Typography variant="body2" color="textSecondary">Phone: {props.phone}</Typography>
 
 
                 </CardContent>
