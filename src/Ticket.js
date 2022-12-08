@@ -80,13 +80,17 @@ return <>
                     <Grid container spacing={3}>
                         {Array.from(Array(rooms.length)).map((_, i) => (
                             <Rooms
-
-                                RoomName = {`${rooms[i].r_name}`}
-                                Building= {`${rooms[i].r_building}`}
-                                Department= {`${rooms[i].r_department}`}
-                                Type= {`${type1(rooms[i].r_type)}`}
-                                Room_id = {rooms[i].r_id}
-                                type={"update"}/>
+                                tid ={`${rooms[i].tid}`}
+                                company = {`${rooms[i].company}`}
+                                model= {`${rooms[i].model}`}
+                                material= {`${rooms[i].material}`}
+                               measurementtype= {`${rooms[i].measurementtype}`}
+                               measurement= {`${rooms[i].measurement}`}
+                               brand ={`${rooms[i].brand}`}
+                               firstname ={`${rooms[i].firstname}`}
+                               lastname ={`${rooms[i].lastname}`}
+                                v_id = {rooms[i].vid}
+                               />
                         ))}
                         <Grid justify={"center"} container item xs={12} md={6} lg={4}>
                             <Rooms
