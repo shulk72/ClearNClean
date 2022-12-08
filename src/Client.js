@@ -21,11 +21,12 @@ class Client extends Component {
 
    search = async val => {
      this.setState({ loading: true });
-     const res = await axios(
-       `https://cleanncleardb2.herokuapp.com/CleanNClear/clients/${this.state.value}/`
+
+     const res = await axios(  `https://cleanncleardb2.herokuapp.com/CleanNClear/clients/${this.state.value}/`
      );
      const clients = await res.data;
 
+        console.log(res.data)
      this.setState({ clients, loading: false });
    };
 

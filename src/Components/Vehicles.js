@@ -26,11 +26,11 @@ function Vehicles(props) {
     const [toMarkAvailable, setToMarkAvailable] = useState("")
     const [invalidTimeSlot, setInvalidTimeSlot] = useState(false)
     const [roomSchedule, setRoomSchedule] = useState(new Date());
-    const [allDay, setallDay] = useState([]);
+
     const [ CanShowSched,setCanShowSched] = useState(false);
     const [name,setname] = useState("");
     const[i,seti] = useState("");
-    const roomID = props.Room_id;
+    const roomID = props.vid;
     console.log(roomID)
     const [st, setst_dt] = useState("");
     let [et, setet_dt] = useState("");
@@ -48,22 +48,8 @@ function Vehicles(props) {
             }
         );
     }
-function type1(parameter){
-        switch(parameter) {
-            case 'laboratory':
-                return 1
-            case 'classroom':
-                return 2
-            case 'office':
-                  return 3
-            case'study_space':
-                return 4
-            case
-                'conference_hall':
-                return 5
-        }
 
-}
+
 
     useEffect(() => {
         if(typeof roomID !== "undefined") {
@@ -84,6 +70,7 @@ function type1(parameter){
                     <Typography variant="body2" color="textSecondary">License Plate:{props.licenseplate}</Typography>
                                      <Typography variant="body2" color="textSecondary"> Model: {props.model}</Typography>
                                      <Typography variant="body2" color="textSecondary">Brand: {props.brand}</Typography>
+                                        <Typography variant="body2" color="textSecondary">Weight: {props.weight}</Typography>
 
 
                 </CardContent>

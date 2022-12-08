@@ -14,21 +14,7 @@ function Vehicles(){
        const data = localStorage.getItem('login-data');
        const dat = JSON.parse(data);
 
-    function type1(parameter) {
-        switch (parameter) {
-            case 1:
-                return 'laboratory'
-            case 2:
-                return 'classroom'
-            case 3:
-                return 'office'
-            case 4:
-                return 'study_space'
-            case 5:
-                return 'conference_hall'
-        }
-    }
-    function getRooms(){
+    function getvehicles(){
         axios.get(`https://cleanncleardb2.herokuapp.com/CleanNClear/vehicles`).then((res) => {
                 setRooms(res.data);
                     console.log(res.data)
@@ -40,7 +26,7 @@ function Vehicles(){
     }
     useEffect(() => {
 
-        getRooms();
+        getvehicles();
         console.log(rooms)
     }, []);
 return <>
@@ -53,21 +39,17 @@ return <>
                         {Array.from(Array(rooms.length)).map((_, i) => (
                             <Rooms
 
-                                License Plate = {`${rooms[i].licenseplate}`}
-                                Model= {`${rooms[i].model}`}
-                                Brand = {`${rooms[i].brand}`}
-
+                                licenseplate = {`${rooms[i].licenseplate}`}
+                                model= {`${rooms[i].model}`}
+                                brand = {`${rooms[i].brand}`}
+                                id = {`${rooms[i].vid}`}
+                                weight = {`${rooms[i].weight}`}
                                 type={"update"}/>
                         ))}
-                        <Grid justify={"center"} container item xs={12} md={6} lg={4}>
-                            <Rooms
-                                roomName={`Create`}
-                                building={`New Room`}
-                                type={"create"}
-                            />
+
                         </Grid>
 
-                    </Grid>
+
                 </Container>
 
 </Segment>

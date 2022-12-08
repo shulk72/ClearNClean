@@ -13,8 +13,8 @@ function Info(){
         const [BookedPersons, setBookedPerson] = useState([]);
     const [t,sett]= useState(false);
 function  componentDidMount() {
-    axios.get('https://booking-system-pika.herokuapp.com/pika-booking/persons/most-booked').then(res => {
 
+ axios.get('https://booking-system-pika.herokuapp.com/pika-booking/persons/most-booked').then(res => {
         setBookedPerson(res.data);
 
         console.log(res.data)
