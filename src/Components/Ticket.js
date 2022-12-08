@@ -99,8 +99,16 @@ function clear(){
             }
         );
     }
-function total(){
+function subtotal(t){
+ return t*10
  }
+ function tax(t){
+ return subtotal(t)*0.115
+ }
+ function total(t){
+ return subtotal(t) + tax(t)
+ }
+
 function type1(parameter) {
         switch (parameter) {
             case 1:
@@ -242,8 +250,8 @@ function type1(parameter) {
                     <Typography variant="body2" color="textSecondary"> Client ID: {props.client} </Typography>
                     <Typography variant="body2" color="textSecondary"> Vehicle License Plate: {props.license}  _______       Model: {props.model}</Typography>
                      <Typography variant="body2" color="textSecondary"> Material: {props.material} _______ Measurement type: {props.materialtype}</Typography>
-                      <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost: {props.cost}</Typography>
-                      <Typography variant="body2" color="textSecondary"> Subtotal: {props.subtotal} </Typography>
+                      <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost: $10.00</Typography>
+                      <Typography variant="body2" color="textSecondary"> Subtotal: {subtotal(props.measurement)} </Typography>
                       <Typography variant="body2" color="textSecondary"> Tax: {props.tax} _______ Driver Name: {props.driver}</Typography>
                       <Typography variant="body2" color="textSecondary"> Total: {props.total} </Typography>
                 </CardContent>
