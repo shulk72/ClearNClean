@@ -52,11 +52,16 @@ function Ticket(props) {
             setCreatedMessage("Failed to create room, invalid parameters");
         } else {
             console.log("Creating Room")
-            let data = { "company": company,
-                "r_name": name,
-                "r_dept": dept,
-                "r_type": type1(type)
-
+            let data = {  "vid": ,
+                          "model": model,
+                          "brand":,
+                          "firstname":,
+                          "lastname":,
+                          "company": company,
+                          "material":material,
+                          "measurementtype":,
+                          "measurement": measurement,
+                          "price" :
 
                 }
             axios.post(`https://cleanncleardb2.herokuapp.com/CleanNClear/tickets`, data
