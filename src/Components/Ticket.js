@@ -12,7 +12,11 @@ import {EditOutlined, MoreHorizOutlined} from "@material-ui/icons";
 function Ticket(props) {
 
     const [open, setOpen] = useState();
-    const [Building, setBuilding] = useState("");
+    const [company, setcompany] = useState("");
+    const [client,setclient]= useState("");
+    const [lastvisit,setlastvisit]= useState("");
+    const [license,setlicense]= useState("");
+    const [model,setmodel] = useState("");
     const [type, settype] = useState("");
     const [dept, setdept] = useState("");
     const [ Material, setMaterial] = useState("");
@@ -43,19 +47,19 @@ function Ticket(props) {
     const[y,sety]= useState("")
 
     function createRoom(){
-        if(  type==="" || Building==="" || dept===""){
+        if(  type==="" || company==="" || dept===""){
             console.log("Empty Field")
             setCreatedMessage("Failed to create room, invalid parameters");
         } else {
             console.log("Creating Room")
-            let data = { "building": Building,
+            let data = { "company": company,
                 "r_name": name,
                 "r_dept": dept,
                 "r_type": type1(type)
 
 
                 }
-            axios.post(`https://booking-system-pika.herokuapp.com/pika-booking/rooms`, data
+            axios.post(`https://cleanncleardb2.herokuapp.com/CleanNClear/tickets`, data
             ).then(
                 (res) => {
                     console.log(res);
@@ -72,8 +76,8 @@ function Ticket(props) {
 function getcompanyinfo(){
 }
 function clear(){
-        setBuilding="";
-     settype = "" ;
+        setcompany="";
+     setmodel = "" ;
      setdept= "";
     setCreatedMessage="";
    setMeasurement = "";
@@ -303,15 +307,15 @@ console.log(data)
                                 <Form>
                                 Company Information:
                                    <Form.Input
-                                                                        onChange={(e) => {setBuilding(e.target.value);}}
+                                                                        onChange={(e) => {setcompany(e.target.value);}}
                                                                         label='Company'
                                                                     />
                                    <Form.Input
-                                                                        onChange={(e) => {setBuilding(e.target.value);}}
+                                                                        onChange={(e) => {setclient(e.target.value);}}
                                                                         label='Representive'
                                                                     />
                                    <Form.Input
-                                                                        onChange={(e) => {setBuilding(e.target.value);}}
+                                                                        onChange={(e) => {setlastvisit(e.target.value);}}
                                                                         label='Last Visit'
                                                                     />
                                 Vehicle Information:
@@ -321,7 +325,7 @@ console.log(data)
                                         onChange={e => setname(e.target.value)}
                                     />
                                     <Form.Input
-                                        onChange={(e) => {setBuilding(e.target.value);}}
+                                        onChange={(e) => {setmodel(e.target.value);}}
                                         label='Model'
                                     />
                                   <Form.Input label=' Material'>
