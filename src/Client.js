@@ -4,25 +4,25 @@ import _ from 'lodash'
 
 import {
     Grid,
-    Segment, Form, Search
+    Segment, Form, Search, Container
 } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
-import Rooms from "./Components/Client";
-const source = _.times(5, () => ({
+import Cli from "./Components/Client";
 
-}))
+
 
 class Client extends Component {
    state = {
      clients: null,
      loading: false,
+     clie : null,
      value: ''
    };
 
    search = async val => {
      this.setState({ loading: true });
 
-     const res = await axios(  `https://cleanncleardb2.herokuapp.com/CleanNClear/clients/${this.state.value}/`
+     const res = await axios(  `https://cleanncleardb2.herokuapp.com/CleanNClear/clients/${this.state.value}`
      );
      const clients = await res.data;
 
@@ -35,14 +35,31 @@ class Client extends Component {
      this.setState({ value: e.target.value });
    };
 
+
    get renderclients() {
-     let clients = <h1>Theres no clients</h1>;
+//
+//          axios.get(`https://cleanncleardb2.herokuapp.com/CleanNClear/clients`).then((res) => {
+//                  const clie = res.data
+//                   this.setState({ clie});
+//                          console.log(clie)
+//                     }, (error) => {
+//                         console.log(error);
+//                     }
+//                 );
+
+
+
+     let clients = <h1>Please search with Client id</h1>;
      if (this.state.clients) {
-       clients = <Rooms list={this.state.clients} />;
+       clients = <Cli company={this.state.clients.company}
+                        phone = {this.state.clients.phone}
+                        firstname = {this.state.clients.firstname}
+                        lastname = {this.state.clients.lastname}   />;
      }
 
      return clients;
    }
+
 
    render() {
      return (
@@ -50,7 +67,7 @@ class Client extends Component {
          <input
            value={this.state.value}
            onChange={e => this.onChangeHandler(e)}
-           placeholder="Type something to search"
+           placeholder="Type id and then space"
          />
          {this.renderclients}
        </div>

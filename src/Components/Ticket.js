@@ -278,16 +278,16 @@ console.log(data)
                     />
                 }
                 <CardContent>
-                 <Typography variant="body2" color="textSecondary"> Direccion: {props.RoomName}_______ Numero: {props.RoomName} _______ Email:{}</Typography>
-                    <Typography variant="body2" color="textSecondary">Ticket: {props.RoomName}_______ Date: {props.RoomName}</Typography>
-                    <Typography variant="body2" color="textSecondary"> Client ID: {props.Building} _______ Hora de Entrada: {props.RoomName} </Typography>
-                    <Typography variant="body2" color="textSecondary"> Company: {props.Department} _______ Hora de Salida: {props.RoomName}</Typography>
-                    <Typography variant="body2" color="textSecondary"> Vehicle License Plate: {props.Type}  _______       Model: {props.Type}</Typography>
+                 <Typography variant="body2" color="textSecondary"> Direccion: {props.direction}_______ Numero: {props.phone} _______ Email:{}</Typography>
+                    <Typography variant="body2" color="textSecondary">Ticket: {props.id}_______ Date: {props.date}</Typography>
+                    <Typography variant="body2" color="textSecondary"> Client ID: {props.client} _______ Hora de Entrada: {props.hour1} </Typography>
+                    <Typography variant="body2" color="textSecondary"> Company: {props.company} _______ Hora de Salida: {props.hour2}</Typography>
+                    <Typography variant="body2" color="textSecondary"> Vehicle License Plate: {props.license}  _______       Model: {props.model}</Typography>
                      <Typography variant="body2" color="textSecondary"> Material: {props.Type} _______ Measurement type: {props.type}</Typography>
-                      <Typography variant="body2" color="textSecondary"> Measurement: {props.Type} _______ Cost: {props.type}</Typography>
-                      <Typography variant="body2" color="textSecondary"> Subtotal: {props.Type} </Typography>
-                      <Typography variant="body2" color="textSecondary"> Tax: {props.Type} _______ Driver Name: {props.type}</Typography>
-                      <Typography variant="body2" color="textSecondary"> Total: {props.Type} </Typography>
+                      <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost: {props.cost}</Typography>
+                      <Typography variant="body2" color="textSecondary"> Subtotal: {props.subtotal} </Typography>
+                      <Typography variant="body2" color="textSecondary"> Tax: {props.tax} _______ Driver Name: {props.driver}</Typography>
+                      <Typography variant="body2" color="textSecondary"> Total: {props.total} </Typography>
                 </CardContent>
             </Card>
             <Modal centered={false} open={open} onClose={() => setOpen(false)} onOpen={() => setOpen(true)}>
