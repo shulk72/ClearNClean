@@ -73,8 +73,7 @@ function Ticket(props) {
             );
         }
     }
-function getcompanyinfo(){
-}
+
 function clear(){
         setcompany="";
      setmodel = "" ;
