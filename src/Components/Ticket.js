@@ -99,6 +99,8 @@ function clear(){
             }
         );
     }
+function total(){
+ }
 function type1(parameter) {
         switch (parameter) {
             case 1:
