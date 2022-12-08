@@ -47,7 +47,7 @@ function Ticket(props) {
     const[y,sety]= useState("")
 
     function createRoom(){
-        if(  type==="" || company==="" || dept===""){
+        if(  model==="" || brand==="" || company==="", material==="", measurement==="",measurementtype==="", vid ===""){
             console.log("Empty Field")
             setCreatedMessage("Failed to create room, invalid parameters");
         } else {
@@ -59,7 +59,7 @@ function Ticket(props) {
                           "lastname":,
                           "company": company,
                           "material":material,
-                          "measurementtype":,
+                          "measurementtype": measurementtype,
                           "measurement": measurement,
                           "price" :
 
@@ -140,38 +140,7 @@ function type1(parameter) {
         }
     }, []);
 
-    function updateRoom() {
 
-            let data = {"r_id": roomID,
-                "r_name": y,
-                "r_building": i,
-                "r_dept": permission,
-                "r_type": type1(roompermission)}
-            if (y===""){
-                data.r_name= roomData.r_name
-            }
-            if (i === "") {
-                data.r_building = roomData.r_building;
-            }
-            if (permission === "") {
-                data.r_dept= roomData.r_dept;
-            }
-            if (roompermission=== "") {
-                data.r_type= type1(roomData.r_type);
-            }
-            console.log(data)
-            axios.put(`https://booking-system-pika.herokuapp.com/pika-booking/rooms`,
-                data
-            ).then((res) => {
-                console.log(res);
-
-                window.location.reload(false);
-            }, (error) => {
-                console.log(error);
-
-            });
-
-    }
 
     function deleteRoom(){
         axios.delete(`https://booking-system-pika.herokuapp.com/pika-booking/rooms/${roomID}`).then(
@@ -287,11 +256,11 @@ console.log(data)
                 }
                 <CardContent>
                  <Typography variant="body2" color="textSecondary"> Direccion: {props.direction}_______ Numero: {props.phone} _______ Email:{}</Typography>
-                    <Typography variant="body2" color="textSecondary">Ticket: {props.id}_______ Date: {props.date}</Typography>
+                    <Typography variant="body2" color="textSecondary">Ticket: {props.tid}_______ Date: {props.date}</Typography>
                     <Typography variant="body2" color="textSecondary"> Client ID: {props.client} _______ Hora de Entrada: {props.hour1} </Typography>
                     <Typography variant="body2" color="textSecondary"> Company: {props.company} _______ Hora de Salida: {props.hour2}</Typography>
                     <Typography variant="body2" color="textSecondary"> Vehicle License Plate: {props.license}  _______       Model: {props.model}</Typography>
-                     <Typography variant="body2" color="textSecondary"> Material: {props.Type} _______ Measurement type: {props.type}</Typography>
+                     <Typography variant="body2" color="textSecondary"> Material: {props.material} _______ Measurement type: {props.materialtype}</Typography>
                       <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost: {props.cost}</Typography>
                       <Typography variant="body2" color="textSecondary"> Subtotal: {props.subtotal} </Typography>
                       <Typography variant="body2" color="textSecondary"> Tax: {props.tax} _______ Driver Name: {props.driver}</Typography>
@@ -326,14 +295,14 @@ console.log(data)
                                     <Form.Input
                                         label="License Plate"
                                         value={name}
-                                        onChange={e => setname(e.target.value)}
+                                        onChange={e => setlicense(e.target.value)}
                                     />
                                     <Form.Input
                                         onChange={(e) => {setmodel(e.target.value);}}
                                         label='Model'
                                     />
                                   <Form.Input label=' Material'>
-                                   <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setpermission(e.target.value);}}>
+                                   <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setMaterial(e.target.value);}}>
                                     <option key={0} value={"0"}>Select Type</option>
                                                                     {  ['Domestico',
                                                                                             'Agricultura',
@@ -352,7 +321,7 @@ console.log(data)
 
                                     </Form.Input>
                                     <Form.Input label='Measurement type'>
-                                        <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setdept(e.target.value);}}>
+                                        <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setMtype(e.target.value);}}>
                                             <option key={0} value={"0"}>Select Type</option>
                                             {
                                                 [ 'Cubic Yards',
