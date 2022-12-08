@@ -19,9 +19,14 @@ function Ticket(props) {
     const [model,setmodel] = useState("");
     const [type, settype] = useState("");
     const [dept, setdept] = useState("");
-    const [ Material, setMaterial] = useState("");
+    const [ material, setmaterial] = useState("");
+    const [price,setprice]= useState("");
+    const[vid,setvid]= useState("");
+    const[brand,setbrand]= useState("");
+    const[firstname,setfirstname]= useState("");
+    const[lastname,setlastname]= useState("");
     const [createdMessage, setCreatedMessage] = useState("");
-  const [Measurement, setMeasurement] = useState("");
+  const [measurement, setmeasurement] = useState("");
   const [Mtype, setMtype] = useState("");
   const [comment, setcomment] = useState("");
   const [compinfo,setcompinfo]= useState("");
@@ -47,21 +52,21 @@ function Ticket(props) {
     const[y,sety]= useState("")
 
     function createRoom(){
-        if(  model==="" || brand==="" || company==="", material==="", measurement==="",measurementtype==="", vid ===""){
+        if(  model==="" || brand==="" || company==="", material==="", measurement==="",Mtype==="", vid ===""){
             console.log("Empty Field")
             setCreatedMessage("Failed to create room, invalid parameters");
         } else {
             console.log("Creating Room")
-            let data = {  "vid": ,
+            let data = {  "vid": vid ,
                           "model": model,
-                          "brand":,
-                          "firstname":,
-                          "lastname":,
+                          "brand": brand,
+                          "firstname": firstname,
+                          "lastname": lastname,
                           "company": company,
                           "material":material,
-                          "measurementtype": measurementtype,
+                          "measurementtype": Mtype,
                           "measurement": measurement,
-                          "price" :
+                          "price" : price
 
                 }
             axios.post(`https://cleanncleardb2.herokuapp.com/CleanNClear/tickets`, data
@@ -84,7 +89,7 @@ function clear(){
      setmodel = "" ;
      setdept= "";
     setCreatedMessage="";
-   setMeasurement = "";
+   setmeasurement = "";
     }
     function getRoomData(){
         axios.get(`https://booking-system-pika.herokuapp.com/pika-booking/rooms/${roomID}`).then((res) => {
@@ -157,32 +162,7 @@ function type1(parameter) {
         );
     }
 
-    function Time(year,month, date, hours, minutes){
-        if (minutes===0)
-            return `${year}-${month +1}-${date} ${hours}:00:00`;
-        else if (minutes< 10)
-            return `${year}-${month +1}-${date} ${hours}:0${minutes}:00`;
-        else
-            return `${year}-${month +1}-${date} ${hours}:${minutes}:00`;
-    }
-    function markRoom(){
-        console.log(st.getMonth())
-        console.log(st.getDate())
-        let s =Time(st.getFullYear(),st.getMonth(),st.getDate(),st.getHours(),st.getMinutes())
-        console.log(s)
-       let e = Time(et.getFullYear(),et.getMonth(),et.getDate(),et.getHours(),et.getMinutes())
-        const data= {"room_id": roomID,  "st_dt": s,
-            "et_dt": e, person_id: JSON.parse(localStorage.getItem('login-data')).p_id};
-console.log(data)
-        axios.post(`https://booking-system-pika.herokuapp.com/pika-booking/rooms/available`,
-            data
-        ).then((res) => {
-            console.log(res);
-            window.location.reload(false);
-        },(error) => {
-            console.log(error);
-        });
-    }
+
 
     function markRoomAvailable(){
         console.log(toMarkAvailable)
@@ -255,10 +235,9 @@ console.log(data)
                     />
                 }
                 <CardContent>
-                 <Typography variant="body2" color="textSecondary"> Direccion: {props.direction}_______ Numero: {props.phone} _______ Email:{}</Typography>
+                 <Typography variant="body2" color="textSecondary">  Numero: {props.phone}</Typography>
                     <Typography variant="body2" color="textSecondary">Ticket: {props.tid}_______ Date: {props.date}</Typography>
-                    <Typography variant="body2" color="textSecondary"> Client ID: {props.client} _______ Hora de Entrada: {props.hour1} </Typography>
-                    <Typography variant="body2" color="textSecondary"> Company: {props.company} _______ Hora de Salida: {props.hour2}</Typography>
+                    <Typography variant="body2" color="textSecondary"> Client ID: {props.client} </Typography>
                     <Typography variant="body2" color="textSecondary"> Vehicle License Plate: {props.license}  _______       Model: {props.model}</Typography>
                      <Typography variant="body2" color="textSecondary"> Material: {props.material} _______ Measurement type: {props.materialtype}</Typography>
                       <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost: {props.cost}</Typography>
@@ -302,7 +281,7 @@ console.log(data)
                                         label='Model'
                                     />
                                   <Form.Input label=' Material'>
-                                   <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setMaterial(e.target.value);}}>
+                                   <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setmaterial(e.target.value);}}>
                                     <option key={0} value={"0"}>Select Type</option>
                                                                     {  ['Domestico',
                                                                                             'Agricultura',
@@ -331,14 +310,10 @@ console.log(data)
 
                                     </Form.Input>
   <Form.Input
-                                        onChange={(e) => {setMeasurement(e.target.value);}}
+                                        onChange={(e) => {setmeasurement(e.target.value);}}
                                         label='Measurement'
                                     />
 
-                                                            <Form.Input
-                                                                        onChange={(e) => {setcomment(e.target.value);}}
-                                                                        label='Comentario'
-                                                                    />
 
                                                                 </Form>
 
@@ -392,48 +367,7 @@ console.log(data)
                         </Modal.Description>
                     }
 
-                    {
-                        props.type === "update" && unavailability && !schedule &&
-                        <Modal.Description>
-                            Select Time Slot to mark unavailable: Start: &nbsp;
-                            <DateTimePicker
-                                onChange={(e) => handleChange(e)}
-                                value={st}
-                            />
-                            End time:  &nbsp;
-                            <DateTimePicker
-                                onChange={(e) => handleChange1(e)}
-                                value={et}
-                            />
-                            <br/>
-                            Are you sure you want to mark this room as unavailable in the chosen time slot? You will not let anyone be able to book any meetings with this room at this time if marked
-                            <br/>{<Button onClick={markRoom}>Mark As Unavailable</Button>}
-                            <br/><br/>
-                            Or select Time Slot to mark available, can be unavailable for an entire day if needed.
-                            {unavailableTimeSlots.length > 0 &&
-                                <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {
-                                    if (e.target.value !== "") {
-                                        setToMarkAvailable(e.target.value);
 
-                                        setInvalidTimeSlot(false);
-
-                                    } else setInvalidTimeSlot(true)
-                                }}>
-                                    <option key={0} value={"0"}>Select Time Slot</option>
-                                    {Array.from(Array(unavailableTimeSlots.length)).map((_, i) => (
-                                        <option key={unavailableTimeSlots[i].ra_id} value={unavailableTimeSlots[i].ra_id}>{`${unavailableTimeSlots[i].start} - ${unavailableTimeSlots[i].end}`}</option>
-                                    ))}
-                                </select>
-                            }
-                            {unavailableTimeSlots.length === 0 && <p style={{fontSize:"1em"}}>This Room has no time slots marked as unavailable</p>}
-                            {invalidTimeSlot && <div style={{color: "red"}}> Please select a time slot</div>}
-                            <br/>
-                            { unavailableTimeSlots.length > 0 &&
-                                <p style={{fontSize: "1em"}}>Are you sure you want to mark this room as available in the chosen time slot? Anyone will be able to book any meetings with this room at this time if marked</p>
-                            }
-
-                        </Modal.Description>
-                    }
 
                     {
                         props.type === "update" && schedule && !unavailability &&
