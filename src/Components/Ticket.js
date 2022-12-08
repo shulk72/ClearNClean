@@ -66,7 +66,7 @@ function Ticket(props) {
                           "material":material,
                           "measurementtype": Mtype,
                           "measurement": measurement,
-                          "price" : price
+                          "price" : 10
 
                 }
             axios.post(`https://cleanncleardb2.herokuapp.com/CleanNClear/tickets`, data
