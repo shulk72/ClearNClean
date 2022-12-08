@@ -248,12 +248,12 @@ function type1(parameter) {
                  <Typography variant="body2" color="textSecondary">  Numero: {props.phone}</Typography>
                     <Typography variant="body2" color="textSecondary">Ticket: {props.tid}_______ Date: {props.date}</Typography>
                     <Typography variant="body2" color="textSecondary"> Client ID: {props.client} </Typography>
-                    <Typography variant="body2" color="textSecondary"> Vehicle License Plate: {props.license}  _______       Model: {props.model}</Typography>
+                    <Typography variant="body2" color="textSecondary"> License Plate: {props.license} _______ Model: {props.model}</Typography>
                      <Typography variant="body2" color="textSecondary"> Material: {props.material} _______ Measurement type: {props.materialtype}</Typography>
                       <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost: $10.00</Typography>
                       <Typography variant="body2" color="textSecondary"> Subtotal: {subtotal(props.measurement)} </Typography>
-                      <Typography variant="body2" color="textSecondary"> Tax: {props.tax} _______ Driver Name: {props.driver}</Typography>
-                      <Typography variant="body2" color="textSecondary"> Total: {props.total} </Typography>
+                      <Typography variant="body2" color="textSecondary"> Tax: {tax(props.measurement)} _______ Driver Name: {props.driver}</Typography>
+                      <Typography variant="body2" color="textSecondary"> Total: {total(props.measurement)} </Typography>
                 </CardContent>
             </Card>
             <Modal centered={false} open={open} onClose={() => setOpen(false)} onOpen={() => setOpen(true)}>
