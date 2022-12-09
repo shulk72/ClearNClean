@@ -26,7 +26,7 @@ function HomePage() {
     function check() {
 
 
-        axios.post('https://booking-system-pika.herokuapp.com/pika-booking/persons/accounts', {"p_email": email, "p_password": password}).then(res=>
+        axios.post('https://cleanncleardb2.herokuapp.com/CleanNClear/user', {"p_email": email, "p_password": password}).then(res=>
         {
             setdata(res.data);
         })
