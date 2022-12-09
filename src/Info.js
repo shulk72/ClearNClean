@@ -35,10 +35,13 @@ function  componentDidMount() {
 
             }
         }
- function getrevuene(){
+ function getrevuened(){
  let t = 0;
    console.log(t)
   for( let i=0; i<tickets.length; i++ ){
+  console.log(tickets[i].date.substr(5, 2))
+  console.log(Date().toLocaleString().substr(8, 2))
+ if(tickets[i].date.substr(5, 2)==Date().toLocaleString().substr(8, 2)&&tickets[i].date.substr(7, 4)==Date().toLocaleString().substr(3, 4)&&tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
   if (tickets[i].measurementtype=="Tons"){
      t= t+(tickets[i].price*tickets[i].measurement)/1.4}
      else {
@@ -49,10 +52,72 @@ function  componentDidMount() {
 
   return t
  }
-function getvolumen(){
+ function getrevueneM(){
+ let t = 0;
+   console.log(t)
+  for( let i=0; i<tickets.length; i++ ){
+  if(tickets[i].date.substr(7, 4)==Date().toLocaleString().substr(3, 4)&&tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
+  if (tickets[i].measurementtype=="Tons"){
+     t= t+(tickets[i].price*tickets[i].measurement)/1.4}
+     else {
+       t= t+(tickets[i].price*tickets[i].measurement)}
+     }
+
+   console.log(t)
+
+  return t
+  }
+  function getrevueney(){
+   let t = 0;
+     console.log(t)
+
+      for( let i=0; i<tickets.length; i++ ){
+       console.log(tickets[i].date.substr(12, 4))
+        console.log(Date().toLocaleString().substr(11, 4))
+   if(tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
+     if (tickets[i].measurementtype=="Tons"){
+        t= t+(tickets[i].price*tickets[i].measurement)/1.4}
+        else {
+          t= t+(tickets[i].price*tickets[i].measurement)}
+        }
+
+      console.log(t)
+
+     return t
+   }
+function getvolumenD(){
 let t = 0;
    console.log(t)
   for( let i=0; i<tickets.length; i++ ){
+if(tickets[i].date.substr(5, 2)==Date().toLocaleString().substr(8, 2)&&tickets[i].date.substr(7, 4)==Date().toLocaleString().substr(3, 4)&&tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
+  if (tickets[i].measurementtype=="Tons"){
+     t= t+tickets[i].measurement/1.4}
+     else {
+     t= t+tickets[i].measurement
+}
+ console.log(t)
+  }
+  return t
+ }
+function getvolumenM(){
+let t = 0;
+   console.log(t)
+  for( let i=0; i<tickets.length; i++ ){
+if(tickets[i].date.substr(7, 4)==Date().toLocaleString().substr(3, 4)&&tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
+if (tickets[i].measurementtype=="Tons"){
+     t= t+tickets[i].measurement/1.4}
+     else {
+     t= t+tickets[i].measurement
+}
+ console.log(t)
+  }
+  return t
+ }
+function getvolumenY(){
+let t = 0;
+   console.log(t)
+  for( let i=0; i<tickets.length; i++ ){
+if(tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
 if (tickets[i].measurementtype=="Tons"){
      t= t+tickets[i].measurement/1.4}
      else {
@@ -63,16 +128,26 @@ if (tickets[i].measurementtype=="Tons"){
   return t
  }
 
-function type (parameter, value){
+function type (parameter){
    switch (parameter) {
            case 'Daily':
-                return value
+                return getrevuened()
             case 'Weekly':
-                return  7*value
+                return  7
             case 'Monthly':
-                return 30*value
+                return getrevueneM()
             case 'Yearly':
-                return  365*value
+                return  getrevueney()
+                }
+}
+function type2 (parameter){
+   switch (parameter) {
+           case 'Daily':
+                return getvolumenD()
+            case 'Monthly':
+                return getvolumenD()
+            case 'Yearly':
+                return  getvolumenY()
                 }
 }
 useEffect(()=> {
@@ -90,7 +165,7 @@ useEffect(()=> {
                                                             <option key={0} value={'0'}>Select time frame</option>
                                                              {
 
-                                                            ['Daily','Weekly','Monthly','Yearly' ].map((item) => {return <option>{item}</option>})
+                                                            ['Daily','Monthly','Yearly' ].map((item) => {return <option>{item}</option>})
                                                                                                            }
                                                         </select>
                                                     </Form.Input>
@@ -103,7 +178,7 @@ useEffect(()=> {
                                         <table style={{marginLeft: "auto", marginRight: "auto"}}> <ul>
                                             <thead>
 
-                                            <th> ${type(ty,getrevuene())}.00 </th>
+                                            <th> ${type(ty)}.00 </th>
                                             </thead>
                                              </ul>
                                             <tbody>
@@ -121,7 +196,7 @@ useEffect(()=> {
                                 <h5> Volume:  (Per Material)<ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
                                     <thead>
                                     <tr>
-                                       <th> {type(ty,getvolumen())} Yards</th>
+                                       <th> {type2(ty)} Yards</th>
 
 
 
