@@ -102,13 +102,8 @@ useEffect(()=> {
 
                                         <table style={{marginLeft: "auto", marginRight: "auto"}}> <ul>
                                             <thead>
-                                            <tr>
-                                                <th>Domestic:${getrevuene()}.00 </th>
 
-
-
-                                            </tr>
-                                            <th>Vegetative: ${type(ty,getrevuene())}.00 </th>
+                                            <th> ${type(ty,getrevuene())}.00 </th>
                                             </thead>
                                              </ul>
                                             <tbody>
@@ -126,14 +121,14 @@ useEffect(()=> {
                                 <h5> Volume:  (Per Material)<ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
                                     <thead>
                                     <tr>
-                                       <th>Domestic: {type(ty,getvolumen())} Yards</th>
+                                       <th> {type(ty,getvolumen())} Yards</th>
 
 
 
 
 
                                     </tr>
-                                    <th>Vegetative: {type(ty,getvolumen())} yards</th>
+
                                     </thead>
                                 </table> </ul> </h5>
                             </Grid.Column>
