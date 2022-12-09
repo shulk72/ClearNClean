@@ -36,7 +36,7 @@ function  componentDidMount() {
             }
         }
  function getrevuened(){
- let t = 0;
+ var t = 0;
    console.log(t)
   for( let i=0; i<tickets.length; i++ ){
   console.log(tickets[i].date.substr(5, 2))
@@ -53,7 +53,7 @@ function  componentDidMount() {
   return t
  }
  function getrevueneM(){
- let t = 0;
+ var t = 0;
    console.log(t)
   for( let i=0; i<tickets.length; i++ ){
   if(tickets[i].date.substr(7, 4)==Date().toLocaleString().substr(3, 4)&&tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
@@ -68,7 +68,7 @@ function  componentDidMount() {
   return t
   }
   function getrevueney(){
-   let t = 0;
+   var t = 0;
      console.log(t)
 
       for( let i=0; i<tickets.length; i++ ){
@@ -86,7 +86,7 @@ function  componentDidMount() {
      return t
    }
 function getvolumenD(){
-let t = 0;
+var t = 0;
    console.log(t)
   for( let i=0; i<tickets.length; i++ ){
 if(tickets[i].date.substr(5, 2)==Date().toLocaleString().substr(8, 2)&&tickets[i].date.substr(7, 4)==Date().toLocaleString().substr(3, 4)&&tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
@@ -100,7 +100,7 @@ if(tickets[i].date.substr(5, 2)==Date().toLocaleString().substr(8, 2)&&tickets[i
   return t
  }
 function getvolumenM(){
-let t = 0;
+ var t = 0;
    console.log(t)
   for( let i=0; i<tickets.length; i++ ){
 if(tickets[i].date.substr(7, 4)==Date().toLocaleString().substr(3, 4)&&tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
@@ -114,7 +114,7 @@ if (tickets[i].measurementtype=="Tons"){
   return t
  }
 function getvolumenY(){
-let t = 0;
+ var t = 0;
    console.log(t)
   for( let i=0; i<tickets.length; i++ ){
 if(tickets[i].date.substr(12, 4)==Date().toLocaleString().substr(11, 4))
@@ -178,7 +178,7 @@ useEffect(()=> {
                                         <table style={{marginLeft: "auto", marginRight: "auto"}}> <ul>
                                             <thead>
 
-                                            <th> ${type(ty)}.00 </th>
+                                            <th> ${type(ty).toFixed(2)}</th>
                                             </thead>
                                              </ul>
                                             <tbody>
@@ -196,7 +196,7 @@ useEffect(()=> {
                                 <h5> Volume:  (Per Material)<ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
                                     <thead>
                                     <tr>
-                                       <th> {type2(ty)} Yards</th>
+                                       <th> {type2(ty).toFixed(2)} Yards</th>
 
 
 

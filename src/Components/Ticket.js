@@ -49,8 +49,8 @@ function Ticket(props) {
                          "measurementtype": Mtype,
                           "measurement": Number(measurement),
                           "price" : 10,
-                          "date": Date().toLocaleString().substr(0, 29),
-                          "tid": 2
+                          "date": Date().toLocaleString().substr(0, 28),
+
 
 
 
@@ -148,8 +148,8 @@ function subtotal(t){
                     <Typography variant="body2" color="textSecondary"> License Plate: {props.license} _______ Model: {props.model}</Typography>
                      <Typography variant="body2" color="textSecondary"> Material: {props.material} _______ Measurement type: {props.measurementtype}</Typography>
                       <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost per {props.measurementtype}: $10.00</Typography>
-                      <Typography variant="body2" color="textSecondary"> Subtotal: ${subtotal(props.measurement)}.00 </Typography>
-                      <Typography variant="body2" color="textSecondary"> Tax: ${tax(props.measurement)} _______</Typography>
+                      <Typography variant="body2" color="textSecondary"> Subtotal: ${subtotal(props.measurement).toFixed(2)} </Typography>
+                      <Typography variant="body2" color="textSecondary"> Tax: ${tax(props.measurement).toFixed(2)} _______</Typography>
                       <Typography variant="body2" color="textSecondary"> Total: ${total(props.measurement)} </Typography>
                 </CardContent>
             </Card>
