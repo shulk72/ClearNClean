@@ -149,7 +149,7 @@ function subtotal(t){
                      <Typography variant="body2" color="textSecondary"> Material: {props.material} _______ Measurement type: {props.measurementtype}</Typography>
                       <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost per {props.measurementtype}: $10.00</Typography>
                       <Typography variant="body2" color="textSecondary"> Subtotal: ${subtotal(props.measurement)}.00 </Typography>
-                      <Typography variant="body2" color="textSecondary"> Tax: ${tax(props.measurement)} _______ Driver Name: {props.driver}</Typography>
+                      <Typography variant="body2" color="textSecondary"> Tax: ${tax(props.measurement)} _______</Typography>
                       <Typography variant="body2" color="textSecondary"> Total: ${total(props.measurement)} </Typography>
                 </CardContent>
             </Card>
