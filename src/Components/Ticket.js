@@ -32,27 +32,34 @@ function Ticket(props) {
   const [compinfo,setcompinfo]= useState("");
 
     function createRoom(){
-        if(  model==="" || brand==="" || company==="", material==="", measurement==="",Mtype==="", vid ===""){
+        if(  model==="" || brand==="" || company===""||material===""|| measurement===""||Mtype===""|| firstname===""|| lastname===""|| vid ===""){
             console.log("Empty Field")
             setCreatedMessage("Failed to create room, invalid parameters");
         } else {
-            console.log("Creating Room")
-            let data = {  "vid": vid ,
-                          "model": model,
+            console.log("Creating Ticket")
+            let data = {
+
                           "brand": brand,
-                          "firstname": firstname,
-                          "lastname": lastname,
                           "company": company,
+                           "date": Date().toLocaleString(),
+                           "firstname": firstname,
+                                                    "lastname": lastname,
                           "material":material,
                           "measurementtype": Mtype,
-                          "measurement": measurement,
-                          "price" : 10
+                          "measurement": Number(measurement),
+                          "model": model,
+                          "price" : 10,
+
+                          "vid" : Number(vid)
 
                 }
-            axios.post(`https://cleanncleardb2.herokuapp.com/CleanNClear/tickets`, data
+                console.log(material)
+                console.log(data)
+
+            axios.post('https://cleanncleardb2.herokuapp.com/CleanNClear/tickets', data
             ).then(
                 (res) => {
-                    console.log(res);
+                    console.log(res.data);
                     setCreatedMessage("Room Successfully Created");
                     console.log(createdMessage);
                     window.location.reload(false);
@@ -61,14 +68,14 @@ function Ticket(props) {
                     setCreatedMessage("Failed to create room, invalid parameters");
                 }
             );
-            clear()
+
         }
 
     }
 
 function clear(){
-   e.preventDefault();
-        setcompany="";
+
+        setcompany("");
      setmodel("") ;
      setmaterial("");
      setMtype("");
@@ -77,7 +84,7 @@ function clear(){
      setbrand("");
      setvid("");
      setlicense("");
-    setCreatedMessage="";
+    setCreatedMessage("");
    setmeasurement("");
 
     }
@@ -137,13 +144,12 @@ function subtotal(t){
                 }
                 <CardContent>
                     <Typography variant="body2" color="textSecondary">Ticket: {props.tid}_______ Date: {props.date}</Typography>
-                    <Typography variant="body2" color="textSecondary"> Vehicle ID: {props.vid} </Typography>
                     <Typography variant="body2" color="textSecondary"> License Plate: {props.license} _______ Model: {props.model}</Typography>
-                     <Typography variant="body2" color="textSecondary"> Material: {props.material} _______ Measurement type: {props.materialtype}</Typography>
+                     <Typography variant="body2" color="textSecondary"> Material: {props.material} _______ Measurement type: {props.measurementtype}</Typography>
                       <Typography variant="body2" color="textSecondary"> Measurement: {props.measurement} _______ Cost: $10.00</Typography>
-                      <Typography variant="body2" color="textSecondary"> Subtotal: {subtotal(props.measurement)} </Typography>
-                      <Typography variant="body2" color="textSecondary"> Tax: {tax(props.measurement)} _______ Driver Name: {props.driver}</Typography>
-                      <Typography variant="body2" color="textSecondary"> Total: {total(props.measurement)} </Typography>
+                      <Typography variant="body2" color="textSecondary"> Subtotal: ${subtotal(props.measurement)}.00 </Typography>
+                      <Typography variant="body2" color="textSecondary"> Tax: ${tax(props.measurement)} _______ Driver Name: {props.driver}</Typography>
+                      <Typography variant="body2" color="textSecondary"> Total: ${total(props.measurement)} </Typography>
                 </CardContent>
             </Card>
             <Modal centered={false} open={open} onClose={() => setOpen(false)} onOpen={() => setOpen(true)}>
@@ -160,7 +166,7 @@ function subtotal(t){
                                 :
                                    <Form.Input
                                                                         onChange={(e) => {setcompany(e.target.value);}}
-                                                                        label='Date'
+                                                                        label='Company'
                                                                     />
                                    <Form.Input
                                                                         onChange={(e) => {setfirstname(e.target.value);}}
@@ -171,10 +177,9 @@ function subtotal(t){
                                            label='Last name '
                                                                                                 />
                                 Vehicle Information:
-                                    <Form.Input
-                                        label="License Plate"
-                                        value={license}
-                                        onChange={e => setlicense(e.target.value)}
+ <Form.Input
+                                        onChange={(e) => {setvid(e.target.value);}}
+                                        label='Vehicle id'
                                     />
                                     <Form.Input
                                         onChange={(e) => {setmodel(e.target.value);}}
@@ -184,10 +189,7 @@ function subtotal(t){
                                                  onChange={(e) => {setbrand(e.target.value);}}
                                                                             label='Brand'
                                                                         />
-                                               <Form.Input
-                                                 onChange={(e) => {setvid(e.target.value);}}
-                                                                            label='Vehicle ID'
-                                                                        />
+
                                   <Form.Input label=' Material'>
                                    <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setmaterial(e.target.value);}}>
                                     <option key={0} value={"0"}>Select Type</option>
@@ -211,7 +213,7 @@ function subtotal(t){
                                         <select defaultValue={"0"} style={{textAlign: "center"}} onChange={(e) => {setMtype(e.target.value);}}>
                                             <option key={0} value={"0"}>Select Type</option>
                                             {
-                                                [ 'Cubic Yards',
+                                                [ ' Yards',
                                                                   'Tons'].map((item) => {return <option>{item}</option>})
                                             }
                                         </select>
@@ -232,7 +234,7 @@ function subtotal(t){
 
                 <Modal.Actions>
                     {props.type === "create" && <Button onClick={createRoom}>Submit</Button>}
-                    {props.type === "create" && <Button onClick={clear}>Clear</Button>}
+
 
                 </Modal.Actions>
             </Modal>
