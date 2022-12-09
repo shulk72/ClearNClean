@@ -61,15 +61,25 @@ function Ticket(props) {
                     setCreatedMessage("Failed to create room, invalid parameters");
                 }
             );
+            clear()
         }
+
     }
 
 function clear(){
+   e.preventDefault();
         setcompany="";
-     setmodel = "" ;
-     setdept= "";
+     setmodel("") ;
+     setmaterial("");
+     setMtype("");
+     setfirstname("");
+     setlastname("");
+     setbrand("");
+     setvid("");
+     setlicense("");
     setCreatedMessage="";
-   setmeasurement = "";
+   setmeasurement("");
+
     }
     function getRoomData(){
 

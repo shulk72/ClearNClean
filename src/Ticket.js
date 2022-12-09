@@ -56,7 +56,7 @@ function Ticket(){
 
     function getTicket(){
         axios.get('https://cleanncleardb2.herokuapp.com/CleanNClear/tickets').then((res) => {
-                setRooms(res.data);
+                settickets(res.data);
                     console.log(res.data)
 
             }, (error) => {
@@ -68,7 +68,7 @@ function Ticket(){
 
         getTicket();
          document.body.classList.add("dark");
-        console.log(rooms)
+        console.log(tickets)
     }, []);
 
 
@@ -78,7 +78,7 @@ return <>
  <h1 style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>Tickets</h1>
                 <Container>
                     <Grid container spacing={3}>
-                        {Array.from(Array(rooms.length)).map((_, i) => (
+                        {Array.from(Array(tickets.length)).map((_, i) => (
                             <Rooms
                                 tid ={`${tickets[i].tid}`}
                                 date = {`${tickets[i].date}`}
