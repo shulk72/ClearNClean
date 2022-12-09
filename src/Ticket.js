@@ -9,7 +9,7 @@ import Rooms from "./Components/Ticket";
 export default
 function Ticket(){
    const [isAuth, setIsAuth] = useState(false)
-       const [rooms, setRooms] = useState([]);
+       const [tickets, settickets] = useState([]);
        const data = localStorage.getItem('login-data');
        const dat = JSON.parse(data);
  const [darkMode, setDarkMode] = React.useState(false);
@@ -80,16 +80,16 @@ return <>
                     <Grid container spacing={3}>
                         {Array.from(Array(rooms.length)).map((_, i) => (
                             <Rooms
-                                tid ={`${rooms[i].tid}`}
-                                date = {`${rooms[i].date}`}
-                                model= {`${rooms[i].model}`}
-                                material= {`${rooms[i].material}`}
-                               measurementtype= {`${rooms[i].measurementtype}`}
-                               measurement= {`${rooms[i].measurement}`}
-                               brand ={`${rooms[i].brand}`}
-                               firstname ={`${rooms[i].firstname}`}
-                               lastname ={`${rooms[i].lastname}`}
-                                v_id = {rooms[i].vid}
+                                tid ={`${tickets[i].tid}`}
+                                date = {`${tickets[i].date}`}
+                                model= {`${tickets[i].model}`}
+                                material= {`${tickets[i].material}`}
+                               measurementtype= {`${tickets[i].measurementtype}`}
+                               measurement= {`${tickets[i].measurement}`}
+                               brand ={`${tickets[i].brand}`}
+                               firstname ={`${tickets[i].firstname}`}
+                               lastname ={`${tickets[i].lastname}`}
+                                v_id = {`${tickets[i].vid}`}
                                />
                         ))}
                         <Grid justify={"center"} container item xs={12} md={6} lg={4}>
