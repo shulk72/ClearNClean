@@ -218,17 +218,6 @@ function subtotal(t){
                             </Grid.Column>
                         </Modal.Description>
                     }
-
-
-
-
-
-
-
-
-
-
-
                 </Modal.Content>
 
                 <Modal.Actions>

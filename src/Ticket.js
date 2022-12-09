@@ -81,7 +81,7 @@ return <>
                         {Array.from(Array(rooms.length)).map((_, i) => (
                             <Rooms
                                 tid ={`${rooms[i].tid}`}
-                                company = {`${rooms[i].company}`}
+                                date = {`${rooms[i].date}`}
                                 model= {`${rooms[i].model}`}
                                 material= {`${rooms[i].material}`}
                                measurementtype= {`${rooms[i].measurementtype}`}
