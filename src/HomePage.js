@@ -74,8 +74,8 @@ function HomePage() {
                 <Form.Input
                     icon='email'
                     iconPosition='left'
-                    label='Email'
-                    placeholder='Email'
+                    label='Email or Username'
+                    placeholder='Email or Username''
                     value={email}
                 onChange={e => setEmail(e.target.value)}
                 />
