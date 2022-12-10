@@ -131,23 +131,23 @@ if (tickets[i].measurementtype=="Tons"){
 function type (parameter){
    switch (parameter) {
            case 'Daily':
-                return getrevuened()
+                return getrevuened().toFixed(2)
             case 'Weekly':
                 return  7
             case 'Monthly':
-                return getrevueneM()
+                return getrevueneM().toFixed(2)
             case 'Yearly':
-                return  getrevueney()
+                return  getrevueney().toFixed(2)
                 }
 }
 function type2 (parameter){
    switch (parameter) {
            case 'Daily':
-                return getvolumenD()
+                return getvolumenD().toFixed(2)
             case 'Monthly':
-                return getvolumenD()
+                return getvolumenM().toFixed(2)
             case 'Yearly':
-                return  getvolumenY()
+                return  getvolumenY().toFixed(2)
                 }
 }
 useEffect(()=> {
@@ -178,7 +178,7 @@ useEffect(()=> {
                                         <table style={{marginLeft: "auto", marginRight: "auto"}}> <ul>
                                             <thead>
 
-                                            <th> ${type(ty).toFixed(2)}</th>
+                                            <th> ${type(ty)}</th>
                                             </thead>
                                              </ul>
                                             <tbody>
@@ -196,7 +196,7 @@ useEffect(()=> {
                                 <h5> Volume:  (Per Material)<ul><table style={{marginLeft: "auto", marginRight: "auto"}}>
                                     <thead>
                                     <tr>
-                                       <th> {type2(ty).toFixed(2)} Yards</th>
+                                       <th> {type2(ty)} Yards</th>
 
 
 

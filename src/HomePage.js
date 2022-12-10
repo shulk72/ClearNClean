@@ -15,7 +15,7 @@ function HomePage() {
     const [open, setOpen] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [data,setdata] =  useState("");
+    const [data,setdata] =  useState([]);
     const handleChange = () => {
         setOpen(true);
     }
@@ -26,17 +26,19 @@ function HomePage() {
     function check() {
 
 
-        axios.post('https://cleanncleardb2.herokuapp.com/CleanNClear/users', {"p_email": email, "p_password": password}).then(res=>
+        axios.get('https://cleanncleardb2.herokuapp.com/CleanNClear/users').then(res=>
         {
             setdata(res.data);
         })
-        if (data=== ""){
+        for(let i=0; i<data.length;i++){
+        if (data[i].username === email && data[i].password=== password||data[i].useremail === email && data[i].password=== password){
+             localStorage.removeItem("login-data")
+                localStorage.setItem("login-data", JSON.stringify(data[i]))
+                console.log(localStorage.getItem("login-data"))
             return true
         }
-        localStorage.removeItem("login-data")
-        localStorage.setItem("login-data", JSON.stringify(data))
-        console.log(localStorage.getItem("login-data"))
-        return true
+        }
+        return false
     }
     return (
         <>
@@ -81,7 +83,7 @@ function HomePage() {
                     value={password}
                 onChange={e => setPassword(e.target.value)}
                 />
-                <Button content='Login' primary onClick={handleLogin}/>
+                <Button content='Login' primary onClick={check()? handleChange:handleLogin}/>
             </Form>
         </Grid.Column>
     </Grid>
