@@ -75,7 +75,7 @@ function HomePage() {
                     icon='email'
                     iconPosition='left'
                     label='Email or Username'
-                    placeholder='Email or Username''
+                    placeholder='Email or Username'
                     value={email}
                 onChange={e => setEmail(e.target.value)}
                 />
