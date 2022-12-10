@@ -31,11 +31,9 @@ function HomePage() {
             setdata(res.data);
 
         })
-          console.log(data)
-          console.log(email)
-          console.log(password)
+
         for(let i=0; i<data.length;i++){
-         console.log(data[i].username === email && data[i].userpassword=== password)
+
         if (data[i].username === email && data[i].userpassword=== password||data[i].useremail === email && data[i].userpassword=== password){
 
              localStorage.removeItem("login-data")
