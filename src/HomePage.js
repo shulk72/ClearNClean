@@ -29,16 +29,22 @@ function HomePage() {
         axios.get('https://cleanncleardb2.herokuapp.com/CleanNClear/users').then(res=>
         {
             setdata(res.data);
+
         })
+          console.log(data)
+          console.log(email)
+          console.log(password)
         for(let i=0; i<data.length;i++){
-        if (data[i].username === email && data[i].password=== password||data[i].useremail === email && data[i].password=== password){
+         console.log(data[i].username === email && data[i].userpassword=== password)
+        if (data[i].username === email && data[i].userpassword=== password||data[i].useremail === email && data[i].userpassword=== password){
+
              localStorage.removeItem("login-data")
                 localStorage.setItem("login-data", JSON.stringify(data[i]))
                 console.log(localStorage.getItem("login-data"))
-            return true
+            return false
         }
         }
-        return false
+        return true
     }
     return (
         <>
