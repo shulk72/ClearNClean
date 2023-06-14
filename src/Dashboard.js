@@ -14,9 +14,10 @@ import Logo from './/Assets/Log.jpg';
 import Logout from "./Logout";
 export default
 function Dashboard(){
-
+ const e=localStorage.getItem("login-data")
 const [isAuth, setIsAuth] = useState(false)
     const panes = [
+
       {
                 menuItem: 'Info', render: () => <Info/>
             },
